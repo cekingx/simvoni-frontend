@@ -1,0 +1,72 @@
+  <!--begin::Page-->
+  <div class="d-flex flex-row flex-column-fluid page">
+    <!--begin::Wrapper-->
+    <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+      <!--begin::Content-->
+      <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+        <!--begin::Entry-->
+        <div class="d-flex flex-column-fluid">
+          <!--begin::Login-->
+          <div class="login login-3 login-signin-on d-flex flex-row-fluid" id="kt_login">
+            <div class="d-flex flex-center bgi-size-cover bgi-no-repeat flex-row-fluid">
+              <div class="login-form text-center text-white p-7 position-relative overflow-hidden">
+                <!--begin::Login Header-->
+                <div class="d-flex flex-center mb-15">
+                  <a href="#">
+                    <img src="assets/media/logos/simvoni.svg" width="250" alt="" />
+                  </a>
+                </div>
+                <!--end::Login Header-->
+                <!--begin::Login Sign in form-->
+                <div class="login-signin">
+                  <div class="mb-20">
+                    <h3 class="text-primary">Sign In To SIMVONI</h3>
+                    <p class="opacity-60 font-weight-bold text-primary">Enter your details to login to your account
+                    </p>
+                  </div>
+                  <form class="form" id="kt_login_signin_form" [formGroup]="formGroup" (ngSubmit)="login()">
+                    <div class="form-group">
+                      <input
+                        class="form-control h-auto text-primary placeholder-white opacity-70 bg-dark-o-70 rounded-pill border-0 py-4 px-8 mb-5 username"
+                        type="text" placeholder="Username" name="username" autocomplete="off" formControlName="username" />
+                      <div style="display:none;" class="fv-plugins-message-container need-username">
+                        <div data-field="username" data-validator="notEmpty" class="fv-help-block">Username is
+                          required</div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <input
+                        class="form-control h-auto text-primary placeholder-white opacity-70 bg-dark-o-70 rounded-pill border-0 py-4 px-8 mb-5 password"
+                        type="password" placeholder="Password" name="password" formControlName="password" />
+                      <div style="display:none;" class="fv-plugins-message-container need-password">
+                        <div data-field="password" data-validator="notEmpty" class="fv-help-block">Password is
+                          required</div>
+                      </div>
+                    </div>
+                    <div class="form-group d-flex flex-wrap justify-content-between align-items-center px-8">
+                      <div class="checkbox-inline">
+                        <label class="checkbox checkbox-outline checkbox-white text-primary m-0">
+                          <input type="checkbox" name="remember" />
+                          <span></span>Remember me</label>
+                      </div>
+                      <!-- <a href="javascript:;" id="kt_login_forgot" class="text-white font-weight-bold">Forget Password ?</a> -->
+                    </div>
+                    <div class="form-group text-center mt-10">
+                      <button type="submit" id="btnLogin"
+                        class="btn btn-pill btn-primary font-weight-bold opacity-90 px-15 py-3">Sign In</button>
+                    </div>
+                  </form>
+                </div>
+                <!--end::Login Sign in form-->
+              </div>
+            </div>
+          </div>
+          <!--end::Login-->
+        </div>
+        <!--end::Entry-->
+      </div>
+      <!--end::Content-->
+    </div>
+    <!--end::Wrapper-->
+  </div>
+  <!--end::Page-->
