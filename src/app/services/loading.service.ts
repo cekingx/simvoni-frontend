@@ -11,12 +11,12 @@ export class LoadingService {
 
   showLoading()
   {
-    this.sendLoadingEvent(false);
+    this.sendLoadingEvent(true);
   }
 
   hideLoading()
   {
-    this.sendLoadingEvent(true);
+    this.sendLoadingEvent(false);
   }
 
   sendLoadingEvent(state: boolean)

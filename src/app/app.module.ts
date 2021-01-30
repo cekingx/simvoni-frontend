@@ -8,13 +8,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SuperAdminModule } from "./super-admin/super-admin.module";
 import { LoadingComponent } from './loading/loading.component';
 import { ToggleLoadingComponent } from './toggle-loading/toggle-loading.component';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     LoadingComponent,
-    ToggleLoadingComponent
+    ToggleLoadingComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,6 +23,7 @@ import { ToggleLoadingComponent } from './toggle-loading/toggle-loading.componen
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     SuperAdminModule
   ],
   providers: [],
