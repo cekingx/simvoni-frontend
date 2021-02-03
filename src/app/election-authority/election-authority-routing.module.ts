@@ -5,8 +5,8 @@ import { AuthGuard } from "@app/_helper/auth.guard";
 
 const routes: Routes = [
   {
-    path: 'super-admin', 
-    component: DashboardComponent, 
+    path: 'election-authority', 
+    component: DashboardComponent,
     canActivate: [AuthGuard]
   }
 ];
@@ -15,4 +15,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class SuperAdminRoutingModule { }
+export class ElectionAuthorityRoutingModule { }
