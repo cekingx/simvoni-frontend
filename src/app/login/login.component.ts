@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
     } else if(role == 'voter') {
       this.router.navigate(['voter']);
     } else {
-      console.log('error');
+      console.log('login component error');
     }
   }
 

@@ -6,13 +6,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class VoterGuard implements CanActivate {
 
   constructor(
     private router: Router,
     private authService: AuthService
-  )
-  { }
+  ) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -20,12 +19,21 @@ export class AuthGuard implements CanActivate {
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree 
   {
     const currentUser = this.authService.currentUserValue;
-    if(currentUser) {
+
+    if(currentUser.role == 'voter') {
       return true;
     }
-
-    this.router.navigate(['login']);
-    return false;
+    
+    if(currentUser.role == 'super_admin') {
+      this.router.navigate(['super-admin'])
+      return false;
+    } else if(currentUser.role == 'election_authority') {
+      this.router.navigate(['election-authority']);
+      return false;
+    } else {
+      console.log('voter guard error');
+      return false;
+    }
   }
   
 }

@@ -6,8 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
-
+export class SuperAdminGuard implements CanActivate {
   constructor(
     private router: Router,
     private authService: AuthService
@@ -20,12 +19,20 @@ export class AuthGuard implements CanActivate {
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree 
   {
     const currentUser = this.authService.currentUserValue;
-    if(currentUser) {
+
+    if(currentUser.role == 'super_admin') {
       return true;
     }
-
-    this.router.navigate(['login']);
-    return false;
+    
+    if(currentUser.role == 'election_authority') {
+      this.router.navigate(['election-authority'])
+      return false;
+    } else if(currentUser.role == 'voter') {
+      this.router.navigate(['voter']);
+      return false;
+    } else {
+      console.log('super-admin guard error');
+      return false;
+    }
   }
-  
 }
