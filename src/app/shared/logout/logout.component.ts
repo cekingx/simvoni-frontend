@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from "../../services/auth.service";
 
 @Component({
-  selector: 'logout-button',
+  selector: 'sv-logout-button',
   templateUrl: './logout.component.html',
   styleUrls: ['./logout.component.scss']
 })
