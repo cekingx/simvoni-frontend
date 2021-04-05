@@ -7,6 +7,9 @@ import { SharedModule } from "../shared/shared.module";
 import { AsideComponent } from './aside/aside.component';
 import { HeaderComponent } from './header/header.component';
 import { SubHeaderComponent } from './sub-header/sub-header.component';
+import { CreateEaComponent } from './pages/create-ea/create-ea.component';
+import { AsideBrandComponent } from './aside-brand/aside-brand.component';
+import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +17,9 @@ import { SubHeaderComponent } from './sub-header/sub-header.component';
     AsideComponent,
     HeaderComponent,
     SubHeaderComponent,
+    CreateEaComponent,
+    AsideBrandComponent,
+    HeaderMobileComponent,
   ],
   imports: [
     CommonModule,
