@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CreateEaDto } from '@app/_models/create-ea.dto';
 import { ElectionAuthority } from '@app/_models/ea';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -18,5 +19,10 @@ export class ElectionAuthorityService {
       .pipe(map((response: any) => {
         return response.data;
       }));
+  }
+
+  createElectionAuthority(createEaDto: CreateEaDto): Observable<any>
+  {
+    return this.http.post(`${baseUrl}/super-admin/election-authority`, createEaDto);
   }
 }

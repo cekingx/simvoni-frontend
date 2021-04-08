@@ -18,7 +18,7 @@ const routes: Routes = [
     canActivate: [AuthGuard, SuperAdminGuard]
   },
   {
-    path: 'super-admin/create-election-authority',
+    path: 'super-admin/election-authority/create',
     component: CreateEaComponent,
     canActivate: [AuthGuard, SuperAdminGuard]
   }
