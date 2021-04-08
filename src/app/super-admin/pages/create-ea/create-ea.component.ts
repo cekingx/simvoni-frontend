@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ElectionAuthorityService } from '@app/super-admin/services/election-authority.service';
+import { ElectionAuthority } from '@app/_models/ea';
 
 @Component({
   selector: 'app-create-ea',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateEaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private electionAuthorityService: ElectionAuthorityService) { }
 
   ngOnInit() {
+    this.electionAuthorityService.getAllElectionAuthority().subscribe((data: ElectionAuthority[]) => {
+      console.log(data);
+    });
   }
 
 }
