@@ -11,6 +11,7 @@ import { VoterModule } from "./voter/voter.module";
 import { SharedModule } from "./shared/shared.module";
 import { LoadingComponent } from './loading/loading.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    SweetAlert2Module.forRoot(),
     SuperAdminModule,
     ElectionAuthorityModule,
     VoterModule,

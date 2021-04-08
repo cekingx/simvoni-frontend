@@ -12,6 +12,7 @@ import { AsideBrandComponent } from './aside-brand/aside-brand.component';
 import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
 import { ShowEaComponent } from './pages/show-ea/show-ea.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     SuperAdminRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SweetAlert2Module
   ]
 })
 export class SuperAdminModule { }
