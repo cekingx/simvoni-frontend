@@ -1,0 +1,154 @@
+<!--begin::Main-->
+<!--begin::Header Mobile-->
+<sv-header-mobile></sv-header-mobile>
+<!--end::Header Mobile-->
+<div class="d-flex flex-column flex-root">
+  <!--begin::Page-->
+  <div class="d-flex flex-row flex-column-fluid page">
+
+    <!--begin::Aside-->
+    <sv-aside-super-admin></sv-aside-super-admin>
+    <!--end::Aside-->
+
+    <!--begin::Wrapper-->
+    <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+      <!--begin::Header-->
+      <sv-header-super-admin></sv-header-super-admin>
+      <!--end::Header-->
+
+      <!--begin::Content-->
+      <div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
+        <!--begin::Subheader-->
+        <sv-sub-header-super-admin [pageTitle]="'Create Election Authority'"></sv-sub-header-super-admin>
+        <!--end::Subheader-->
+
+        <!-- begin::Entry -->
+        <div class="d-flex flex-column">
+          <div class="container">
+            <div class="card card-custom">
+              <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                <div class="card-title">
+                  <h3 class="card-label">Election Authority
+                    <span class="d-block text-muted pt-2 font-size-sm">Election Authority yang telah terdaftar</span>
+                  </h3>
+                </div>
+                <div class="card-toolbar">
+                  <!--begin::Button-->
+                  <a href="#" class="btn btn-primary font-weight-bolder">
+                    <span class="svg-icon svg-icon-md">
+                      <!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Design/Flatten.svg-->
+                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                        height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <rect x="0" y="0" width="24" height="24"></rect>
+                          <circle fill="#000000" cx="9" cy="15" r="6"></circle>
+                          <path
+                            d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z"
+                            fill="#000000" opacity="0.3"></path>
+                        </g>
+                      </svg>
+                      <!--end::Svg Icon-->
+                    </span>Tambah EA</a>
+                  <!--end::Button-->
+                </div>
+              </div>
+              <div class="card-body">
+                <!--begin::Search Form-->
+                <!-- Tambahkan search form disini -->
+                <!--end::Search Form-->
+
+                <!--begin: Datatable-->
+                <div class="datatable datatable-default datatable-bordered datatable-loaded">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Wallet Address</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let ea of electionAuthorities">
+                        <th scope="row">{{ ea.id }}</th>
+                        <td>{{ ea.name }}</td>
+                        <td>{{ ea.username }}</td>
+                        <td>{{ ea.walletAddress == null ? "Tidak ada" : ea.walletAddress }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- begin::pager -->
+                  <!-- <div class="datatable-pager datatable-paging-loaded">
+                    <ul class="datatable-pager-nav my-2 mb-sm-0">
+                      <li><a title="First"
+                          class="datatable-pager-link datatable-pager-link-first datatable-pager-link-disabled"
+                          data-page="1" disabled="disabled"><i class="flaticon2-fast-back"></i></a></li>
+                      <li><a title="Previous"
+                          class="datatable-pager-link datatable-pager-link-prev datatable-pager-link-disabled"
+                          data-page="1" disabled="disabled"><i class="flaticon2-back"></i></a></li>
+                      <li style="display: none;"><input type="text" class="datatable-pager-input form-control"
+                          title="Page number"></li>
+                      <li><a
+                          class="datatable-pager-link datatable-pager-link-number datatable-pager-link-active"
+                          data-page="1" title="1">1</a></li>
+                      <li><a class="datatable-pager-link datatable-pager-link-number" data-page="2"
+                          title="2">2</a></li>
+                      <li><a class="datatable-pager-link datatable-pager-link-number" data-page="3"
+                          title="3">3</a></li>
+                      <li><a class="datatable-pager-link datatable-pager-link-number" data-page="4"
+                          title="4">4</a></li>
+                      <li><a class="datatable-pager-link datatable-pager-link-number" data-page="5"
+                          title="5">5</a></li>
+                      <li><a title="Next" class="datatable-pager-link datatable-pager-link-next" data-page="2"><i
+                            class="flaticon2-next"></i></a></li>
+                      <li><a title="Last" class="datatable-pager-link datatable-pager-link-last" data-page="15"><i
+                            class="flaticon2-fast-next"></i></a></li>
+                    </ul>
+                    <div class="datatable-pager-info my-2 mb-sm-0">
+                      <div class="dropdown bootstrap-select datatable-pager-size" style="width: 60px;"><select
+                          class="selectpicker datatable-pager-size" title="Select page size" data-width="60px"
+                          data-container="body" data-selected="10">
+                          <option class="bs-title-option" value=""></option>
+                          <option value="5">5</option>
+                          <option value="10">10</option>
+                          <option value="20">20</option>
+                          <option value="30">30</option>
+                          <option value="50">50</option>
+                          <option value="100">100</option>
+                        </select><button type="button" tabindex="-1" class="btn dropdown-toggle btn-light"
+                          data-toggle="dropdown" role="combobox" aria-owns="bs-select-17" aria-haspopup="listbox"
+                          aria-expanded="false" title="Select page size">
+                          <div class="filter-option">
+                            <div class="filter-option-inner">
+                              <div class="filter-option-inner-inner">10</div>
+                            </div>
+                          </div>
+                        </button>
+                        <div class="dropdown-menu ">
+                          <div class="inner show" role="listbox" id="bs-select-17" tabindex="-1">
+                            <ul class="dropdown-menu inner show" role="presentation"></ul>
+                          </div>
+                        </div>
+                      </div><span class="datatable-pager-detail">Showing 1 - 10 of 143</span>
+                    </div>
+                  </div> -->
+                  <!-- end::pager -->
+                </div>
+                <!--end: Datatable-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end::Entry -->
+      </div>
+      <!--end::Content-->
+
+      <!--begin::Footer-->
+      <sv-footer></sv-footer>
+      <!--end::Footer-->
+    </div>
+    <!--end::Wrapper-->
+  </div>
+  <!--end::Page-->
+</div>
+<!--end::Main-->

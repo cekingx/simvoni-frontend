@@ -10,6 +10,7 @@ import { SubHeaderComponent } from './sub-header/sub-header.component';
 import { CreateEaComponent } from './pages/create-ea/create-ea.component';
 import { AsideBrandComponent } from './aside-brand/aside-brand.component';
 import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
+import { ShowEaComponent } from './pages/show-ea/show-ea.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
     CreateEaComponent,
     AsideBrandComponent,
     HeaderMobileComponent,
+    ShowEaComponent,
   ],
   imports: [
     CommonModule,
