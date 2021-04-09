@@ -91,6 +91,23 @@
                       <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
                       <!-- end::error -->
                     </form>
+                    <!-- begin::success-swal -->
+                    <swal
+                      #createdEa
+                      title="Sukses"
+                      text="Election Authority berhasil dibuat"
+                      icon="success"
+                      (confirm)="redirectBack()">
+                    </swal>
+                    <!-- end::success-swal -->
+                    <!-- begin::error-swal -->
+                    <swal
+                      #errorSwal
+                      title="Error"
+                      text="{{ error }}"
+                      icon="error">
+                    </swal>
+                    <!-- end::error-swal -->
                   </div>
                 </div>
               </div>

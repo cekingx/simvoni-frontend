@@ -1,1 +1,7 @@
-<button class="btn btn-danger" (click)="logout()">Logout</button>
+<button
+  class="btn btn-danger"
+  [swal]="{ title: 'Anda yakin untuk keluar?', showCancelButton: true, icon: 'question' }"
+  (confirm)="logout()">
+
+  Logout
+</button>

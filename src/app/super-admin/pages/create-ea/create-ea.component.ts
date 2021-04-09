@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoadingService } from '@app/services/loading.service';
 import { ElectionAuthorityService } from '@app/super-admin/services/election-authority.service';
 import { CreateEaDto } from '@app/_models/create-ea.dto';
 import { ElectionAuthority } from '@app/_models/ea';
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
+import { Observable, of } from 'rxjs';
+import { createDeflate } from 'zlib';
 
 @Component({
   selector: 'sv-super-admin-create-ea',
@@ -15,9 +19,16 @@ export class CreateEaComponent implements OnInit {
   submitted = false;
   error = '';
 
+  @ViewChild('createdEa', {static: false})
+  public readonly createdEa: SwalComponent;
+
+  @ViewChild('errorSwal', {static: false})
+  public readonly errorSwal: SwalComponent;
+
   constructor(
     private electionAuthorityService: ElectionAuthorityService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -56,13 +67,19 @@ export class CreateEaComponent implements OnInit {
     this.electionAuthorityService.createElectionAuthority(createEaDto)
       .subscribe(
         result => {
-          console.log('EA Created');
           this.loadingService.hideLoading();
+          this.createdEa.fire();
         },
         err => {
           this.error = err.error.message;
           this.loadingService.hideLoading();
+          this.errorSwal.fire();
         }
       )
+  }
+
+  redirectBack()
+  {
+    this.router.navigate(['super-admin/election-authority']);
   }
 }
