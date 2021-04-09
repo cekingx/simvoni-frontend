@@ -13,6 +13,7 @@ import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
 import { ShowEaComponent } from './pages/show-ea/show-ea.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { ShowAllEaComponent } from './pages/show-all-ea/show-all-ea.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     AsideBrandComponent,
     HeaderMobileComponent,
     ShowEaComponent,
+    ShowAllEaComponent,
   ],
   imports: [
     CommonModule,
