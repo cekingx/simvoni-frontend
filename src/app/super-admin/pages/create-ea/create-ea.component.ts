@@ -7,7 +7,6 @@ import { CreateEaDto } from '@app/_models/create-ea.dto';
 import { ElectionAuthority } from '@app/_models/ea';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { Observable, of } from 'rxjs';
-import { createDeflate } from 'zlib';
 
 @Component({
   selector: 'sv-super-admin-create-ea',

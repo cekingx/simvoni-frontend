@@ -6,6 +6,7 @@ import { SuperAdminGuard } from "@app/_helper/super-admin.guard";
 import { CreateEaComponent } from './pages/create-ea/create-ea.component';
 import { ShowEaComponent } from './pages/show-ea/show-ea.component';
 import { ShowAllEaComponent } from './pages/show-all-ea/show-all-ea.component';
+import { ElectionResolver } from './services/election.resolver';
 
 const routes: Routes = [
   {
@@ -17,6 +18,14 @@ const routes: Routes = [
     path: 'super-admin/election-authority',
     component: ShowAllEaComponent,
     canActivate: [AuthGuard, SuperAdminGuard]
+  },
+  {
+    path: 'super-admin/election-authority/:id',
+    component: ShowEaComponent,
+    canActivate: [AuthGuard, SuperAdminGuard],
+    resolve: {
+      electionAuthority: ElectionResolver
+    }
   },
   {
     path: 'super-admin/election-authority/create',

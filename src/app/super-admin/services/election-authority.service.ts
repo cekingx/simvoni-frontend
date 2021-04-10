@@ -21,6 +21,14 @@ export class ElectionAuthorityService {
       }));
   }
 
+  getElectionAuthorityById(id: number): Observable<any>
+  {
+    return this.http.get<ElectionAuthority>(`${baseUrl}/super-admin/election-authority/${id}`)
+      .pipe(map((response: any) => {
+        return response.data;
+      }));
+  }
+
   createElectionAuthority(createEaDto: CreateEaDto): Observable<any>
   {
     return this.http.post(`${baseUrl}/super-admin/election-authority`, createEaDto);

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ElectionAuthorityService } from '@app/super-admin/services/election-authority.service';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { LoadingService } from '@app/services/loading.service';
 import { ElectionAuthority } from '@app/_models/ea';
 
 @Component({
@@ -8,18 +9,18 @@ import { ElectionAuthority } from '@app/_models/ea';
   styleUrls: ['./show-ea.component.scss']
 })
 export class ShowEaComponent implements OnInit {
-  electionAuthorities: ElectionAuthority[] = [];
+  electionAuthority: ElectionAuthority;
+  eaId: number;
 
   constructor(
-    private electionAuthorityService: ElectionAuthorityService
+    private route: ActivatedRoute,
+    private loadingService: LoadingService
   ) { }
 
   ngOnInit() {
-    this.electionAuthorityService
-      .getAllElectionAuthority()
-      .subscribe((data: ElectionAuthority[]) => {
-        this.electionAuthorities = data;
-      });
+    this.route.data.subscribe((data: any) => {
+      this.electionAuthority = data.electionAuthority;
+      this.loadingService.hideLoading();
+    });
   }
-
 }
