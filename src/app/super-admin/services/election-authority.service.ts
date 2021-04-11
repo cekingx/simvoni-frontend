@@ -33,4 +33,12 @@ export class ElectionAuthorityService {
   {
     return this.http.post(`${baseUrl}/super-admin/election-authority`, createEaDto);
   }
+
+  setWalletAddress(userId: number): Observable<any>
+  {
+    return this.http.post(`${baseUrl}/super-admin/election-authority/set-wallet-address/${userId}`, {})
+      .pipe(map((response: any) => {
+        return response.data
+      }))
+  }
 }

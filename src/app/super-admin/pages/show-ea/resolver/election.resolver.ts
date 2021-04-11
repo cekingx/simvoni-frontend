@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/r
 import { LoadingService } from '@app/services/loading.service';
 import { ElectionAuthority } from '@app/_models/ea';
 import { Observable } from 'rxjs';
-import { ElectionAuthorityService } from './election-authority.service';
+import { ElectionAuthorityService } from '../../../services/election-authority.service';
 
 @Injectable({
   providedIn: 'root'

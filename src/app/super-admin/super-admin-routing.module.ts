@@ -6,7 +6,7 @@ import { SuperAdminGuard } from "@app/_helper/super-admin.guard";
 import { CreateEaComponent } from './pages/create-ea/create-ea.component';
 import { ShowEaComponent } from './pages/show-ea/show-ea.component';
 import { ShowAllEaComponent } from './pages/show-all-ea/show-all-ea.component';
-import { ElectionResolver } from './services/election.resolver';
+import { ElectionResolver } from './pages/show-ea/resolver/election.resolver';
 
 const routes: Routes = [
   {
