@@ -14,6 +14,7 @@ import { ShowEaComponent } from './pages/show-ea/show-ea.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ShowAllEaComponent } from './pages/show-all-ea/show-all-ea.component';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ShowAllEaComponent } from './pages/show-all-ea/show-all-ea.component';
     HeaderMobileComponent,
     ShowEaComponent,
     ShowAllEaComponent,
+    BreadcrumbsComponent
   ],
   imports: [
     CommonModule,

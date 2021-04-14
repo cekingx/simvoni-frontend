@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { LoadingService } from '@app/services/loading.service';
 import { ElectionAuthorityService } from '@app/super-admin/services/election-authority.service';
+import { BreadcrumbItem } from '@app/_models/breadcrumb-item';
 import { ElectionAuthority } from '@app/_models/ea';
 import { Subscription } from 'rxjs';
 
@@ -16,6 +17,16 @@ export class ShowEaComponent implements OnInit, OnDestroy {
   subscriptions: Subscription = new Subscription();
   electionAuthority: ElectionAuthority;
   eaId: number;
+  breadcrumbItems: BreadcrumbItem[] = [
+    {
+      name: 'Dashboard',
+      route: '/super-admin'
+    },
+    {
+      name: 'All EA',
+      route: '/super-admin/election-authority'
+    }
+  ];
 
   constructor(
     private route: ActivatedRoute,
@@ -26,6 +37,10 @@ export class ShowEaComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription1$ = this.route.data.subscribe((data: any) => {
       this.electionAuthority = data.electionAuthority;
+      this.breadcrumbItems.push({
+        name: this.electionAuthority.name,
+        route: '/super-admin/election-authority/' + this.electionAuthority.id
+      })
       this.loadingService.hideLoading();
     });
   }

@@ -1,0 +1,5 @@
+<ul class="breadcrumb breadcrumb-transparent font-weight-bold p-0 my-2 font-size-sm">
+  <li *ngFor="let breadcrumbItem of breadcrumbItems, let i = index" class="breadcrumb-item text-muted">
+    <a [ngClass]="i != (breadcrumbItems.length -1) ? 'text-muted' : ''" routerLink="{{ breadcrumbItem.route }}">{{ breadcrumbItem.name }}</a>
+  </li>
+</ul>

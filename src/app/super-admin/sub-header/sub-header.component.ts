@@ -1,4 +1,5 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { BreadcrumbItem } from '@app/_models/breadcrumb-item';
 
 @Component({
   selector: 'sv-sub-header-super-admin',
@@ -8,6 +9,7 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
 export class SubHeaderComponent implements OnInit {
   @HostBinding('class') class = 'subheader py-2 py-lg-4 subheader-solid';
   @Input() pageTitle: string;
+  @Input() breadcrumbItems: BreadcrumbItem[];
 
   constructor() { }
 
