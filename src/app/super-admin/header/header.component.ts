@@ -2,7 +2,7 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 import { AuthService } from '@app/services/auth.service';
 
 @Component({
-  selector: 'sv-header-super-admin',
+  selector: 'sv-super-admin-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })

@@ -5,10 +5,9 @@ import { ElectionAuthority } from '@app/_models/ea';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { baseUrl } from 'src/environments/environment';
+import { SuperAdminModule } from '../super-admin.module';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ElectionAuthorityService {
 
   constructor(private http: HttpClient) { }

@@ -2,7 +2,7 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { BreadcrumbItem } from '@app/_models/breadcrumb-item';
 
 @Component({
-  selector: 'sv-sub-header-super-admin',
+  selector: 'sv-super-admin-sub-header',
   templateUrl: './sub-header.component.html',
   styleUrls: ['./sub-header.component.scss']
 })

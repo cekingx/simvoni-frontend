@@ -4,14 +4,34 @@ import { CommonModule } from '@angular/common';
 import { ElectionAuthorityRoutingModule } from './election-authority-routing.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SharedModule } from "../shared/shared.module";
+import { AsideBrandComponent } from './aside-brand/aside-brand.component';
+import { HeaderComponent } from './header/header.component';
+import { SubHeaderComponent } from './sub-header/sub-header.component';
+import { AsideComponent } from './aside/aside.component';
+import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { VotingComponent } from './pages/voting/voting.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [
+    DashboardComponent,
+    AsideComponent,
+    HeaderComponent,
+    SubHeaderComponent,
+    AsideBrandComponent,
+    HeaderMobileComponent,
+    BreadcrumbsComponent,
+    VotingComponent
+  ],
   imports: [
     CommonModule,
     ElectionAuthorityRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
+    SweetAlert2Module
   ]
 })
 export class ElectionAuthorityModule { }

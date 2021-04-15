@@ -1,7 +1,7 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'sv-header-mobile',
+  selector: 'sv-super-admin-header-mobile',
   templateUrl: './header-mobile.component.html',
   styleUrls: ['./header-mobile.component.scss']
 })

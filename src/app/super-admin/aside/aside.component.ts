@@ -1,7 +1,7 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'sv-aside-super-admin',
+  selector: 'sv-super-admin-aside',
   templateUrl: './aside.component.html',
   styleUrls: ['./aside.component.scss']
 })

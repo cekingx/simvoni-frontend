@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ShowAllEaComponent } from './pages/show-all-ea/show-all-ea.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { ElectionAuthorityService } from './services/election-authority.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,9 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
     SharedModule,
     ReactiveFormsModule,
     SweetAlert2Module
+  ],
+  providers: [
+    ElectionAuthorityService
   ]
 })
 export class SuperAdminModule { }
