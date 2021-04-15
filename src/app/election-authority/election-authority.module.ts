@@ -12,7 +12,7 @@ import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { VotingComponent } from './pages/voting/voting.component';
+import { ElectionComponent } from './pages/election/election.component';
 
 
 @NgModule({
@@ -24,7 +24,7 @@ import { VotingComponent } from './pages/voting/voting.component';
     AsideBrandComponent,
     HeaderMobileComponent,
     BreadcrumbsComponent,
-    VotingComponent
+    ElectionComponent
   ],
   imports: [
     CommonModule,

@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private loadingService: LoadingService,
     private router: Router
-  ) 
+  )
   { }
 
   ngOnInit() {
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
           this.loadingService.hideLoading();
         },
         error => {
-          this.error = error.error.message,
+          this.error = error,
           this.loadingService.hideLoading();
         }
       );

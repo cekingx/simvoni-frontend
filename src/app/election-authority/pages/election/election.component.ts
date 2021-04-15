@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { BreadcrumbItem } from '@app/_models/breadcrumb-item';
 
 @Component({
-  selector: 'app-voting',
-  templateUrl: './voting.component.html',
-  styleUrls: ['./voting.component.scss']
+  selector: 'app-election',
+  templateUrl: './election.component.html',
+  styleUrls: ['./election.component.scss']
 })
-export class VotingComponent implements OnInit {
+export class ElectionComponent implements OnInit {
   breadcrumbItems: BreadcrumbItem[] = [
     {
       name: 'Dashboard',
@@ -14,9 +14,10 @@ export class VotingComponent implements OnInit {
     },
     {
       name: 'Voting',
-      route: '/election-authority/voting'
+      route: '/election-authority/election'
     }
-  ]
+  ];
+  elections: any;
 
   constructor() { }
 

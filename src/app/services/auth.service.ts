@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -13,8 +13,8 @@ export class AuthService {
   public currentUser: Observable<User>;
   private response: any = {}
 
-  constructor(private http: HttpClient) 
-  { 
+  constructor(private http: HttpClient)
+  {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -26,7 +26,8 @@ export class AuthService {
 
   login(username: string, password: string): Observable<any>
   {
-    return this.http.post(`${baseUrl}/login`, {username, password})
+    const reqHeader = new HttpHeaders({ 'Content-Type': 'application/json', 'No-Auth': 'True' });
+    return this.http.post(`${baseUrl}/login`, {username, password}, { headers: reqHeader })
     .pipe(map(user => {
       this.response = user;
       localStorage.setItem('currentUser', JSON.stringify(this.response.data));
