@@ -20,6 +20,11 @@ const routes: Routes = [
     canActivate: [AuthGuard, SuperAdminGuard]
   },
   {
+    path: 'super-admin/election-authority/create',
+    component: CreateEaComponent,
+    canActivate: [AuthGuard, SuperAdminGuard]
+  },
+  {
     path: 'super-admin/election-authority/:id',
     component: ShowEaComponent,
     canActivate: [AuthGuard, SuperAdminGuard],
@@ -27,11 +32,6 @@ const routes: Routes = [
       electionAuthority: ElectionResolver
     }
   },
-  {
-    path: 'super-admin/election-authority/create',
-    component: CreateEaComponent,
-    canActivate: [AuthGuard, SuperAdminGuard]
-  }
 ];
 
 @NgModule({
