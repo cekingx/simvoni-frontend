@@ -12,7 +12,9 @@ import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { ElectionComponent } from './pages/election/election.component';
+import { ElectionService } from './services/election.service';
+import { ShowAllElectionComponent } from './pages/show-all-election/show-all-election.component';
+import { CreateElectionComponent } from './pages/create-election/create-election.component';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { ElectionComponent } from './pages/election/election.component';
     AsideBrandComponent,
     HeaderMobileComponent,
     BreadcrumbsComponent,
-    ElectionComponent
+    ShowAllElectionComponent,
+    CreateElectionComponent
   ],
   imports: [
     CommonModule,
@@ -32,6 +35,7 @@ import { ElectionComponent } from './pages/election/election.component';
     SharedModule,
     ReactiveFormsModule,
     SweetAlert2Module
-  ]
+  ],
+  providers: [ElectionService]
 })
 export class ElectionAuthorityModule { }

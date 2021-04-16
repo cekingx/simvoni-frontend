@@ -34,7 +34,7 @@
                 </div>
                 <div class="card-toolbar">
                   <!--begin::Button-->
-                  <a routerLink="/super-admin/election-authority/create" class="btn btn-primary font-weight-bolder">
+                  <a routerLink="/election-authority/election/create" class="btn btn-primary font-weight-bolder">
                     <span class="svg-icon svg-icon-md">
                       <!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Design/Flatten.svg-->
                       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -73,8 +73,13 @@
                       <tr *ngFor="let election of elections, let i = index">
                         <td>{{ i+1 }}</td>
                         <td>{{ election.name }}</td>
-                        <td>{{ election.periode }}</td>
-                        <td>{{ election.status }}</td>
+                        <td>{{ this.formattedDate(election.start) }} - {{ this.formattedDate(election.end) }}</td>
+                        <td>
+                          <sv-label
+                            [state]="'primary'"
+                            [text]="election.status"
+                          ></sv-label>
+                        </td>
                         <td>
                           <!-- begin::icon-setting -->
                           <a [routerLink]="['/election-authority/election/', election.id]" class="btn btn-sm btn-clean btn-icon mr-2">

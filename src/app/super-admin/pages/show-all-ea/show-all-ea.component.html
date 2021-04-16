@@ -74,7 +74,14 @@
                         <td>{{ i+1 }}</td>
                         <td>{{ ea.name }}</td>
                         <td>{{ ea.username }}</td>
-                        <td>{{ ea.walletAddress == null ? "Tidak Ada" : ea.walletAddress }}</td>
+                        <td>
+                          <sv-label
+                            *ngIf="ea.walletAddress == null"
+                            [state]="'danger'"
+                            [text]="'Tidak Ada'"
+                          ></sv-label>
+                          {{ ea.walletAddress }}
+                        </td>
                         <td>
                           <!-- begin::icon-setting -->
                           <a [routerLink]="['/super-admin/election-authority/', ea.id]" class="btn btn-sm btn-clean btn-icon mr-2">

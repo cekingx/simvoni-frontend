@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { AuthGuard } from "@app/_helper/auth.guard";
 import { ElectionAuthorityGuard } from "@app/_helper/election-authority.guard";
-import { ElectionComponent } from './pages/election/election.component';
+import { ShowAllElectionComponent } from './pages/show-all-election/show-all-election.component';
+import { CreateElectionComponent } from './pages/create-election/create-election.component';
 
 const routes: Routes = [
   {
@@ -13,7 +14,12 @@ const routes: Routes = [
   },
   {
     path: 'election-authority/election',
-    component: ElectionComponent,
+    component: ShowAllElectionComponent,
+    canActivate: [AuthGuard, ElectionAuthorityGuard]
+  },
+  {
+    path: 'election-authority/election/create',
+    component: CreateElectionComponent,
     canActivate: [AuthGuard, ElectionAuthorityGuard]
   }
 ];

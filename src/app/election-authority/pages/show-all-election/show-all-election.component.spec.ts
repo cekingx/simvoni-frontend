@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ElectionComponent } from './election.component';
+import { ShowAllElectionComponent } from './show-all-election.component';
 
-describe('ElectionComponent', () => {
-  let component: ElectionComponent;
-  let fixture: ComponentFixture<ElectionComponent>;
+describe('ShowAllElectionComponent', () => {
+  let component: ShowAllElectionComponent;
+  let fixture: ComponentFixture<ShowAllElectionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ElectionComponent ]
+      declarations: [ ShowAllElectionComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ElectionComponent);
+    fixture = TestBed.createComponent(ShowAllElectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
