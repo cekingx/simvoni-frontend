@@ -4,6 +4,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { DisplayDateComponent } from './display-date/display-date.component';
 import { FooterComponent } from './footer/footer.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { LabelComponent } from './label/label.component';
 
 
 
@@ -11,7 +12,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
   declarations: [
     LogoutComponent,
     DisplayDateComponent,
-    FooterComponent
+    FooterComponent,
+    LabelComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
   exports: [
     LogoutComponent,
     DisplayDateComponent,
-    FooterComponent
+    FooterComponent,
+    LabelComponent
   ]
 })
 export class SharedModule { }
