@@ -7,6 +7,7 @@ import { CreateEaComponent } from './pages/create-ea/create-ea.component';
 import { ShowEaComponent } from './pages/show-ea/show-ea.component';
 import { ShowAllEaComponent } from './pages/show-all-ea/show-all-ea.component';
 import { ElectionResolver } from './pages/show-ea/resolver/election.resolver';
+import { ShowRtdElectionComponent } from './pages/show-rtd-election/show-rtd-election.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,11 @@ const routes: Routes = [
       electionAuthority: ElectionResolver
     }
   },
+  {
+    path: 'super-admin/election/ready-to-deploy',
+    component: ShowRtdElectionComponent,
+    canActivate: [AuthGuard, SuperAdminGuard]
+  }
 ];
 
 @NgModule({

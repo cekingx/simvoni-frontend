@@ -16,6 +16,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ShowAllEaComponent } from './pages/show-all-ea/show-all-ea.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { ElectionAuthorityService } from './services/election-authority.service';
+import { ShowRtdElectionComponent } from './pages/show-rtd-election/show-rtd-election.component';
+import { ElectionService } from './services/election.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { ElectionAuthorityService } from './services/election-authority.service'
     HeaderMobileComponent,
     ShowEaComponent,
     ShowAllEaComponent,
-    BreadcrumbsComponent
+    BreadcrumbsComponent,
+    ShowRtdElectionComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +41,8 @@ import { ElectionAuthorityService } from './services/election-authority.service'
     SweetAlert2Module
   ],
   providers: [
-    ElectionAuthorityService
+    ElectionAuthorityService,
+    ElectionService
   ]
 })
 export class SuperAdminModule { }
