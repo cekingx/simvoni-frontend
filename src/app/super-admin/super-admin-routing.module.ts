@@ -6,7 +6,7 @@ import { SuperAdminGuard } from "@app/_helper/super-admin.guard";
 import { CreateEaComponent } from './pages/create-ea/create-ea.component';
 import { ShowEaComponent } from './pages/show-ea/show-ea.component';
 import { ShowAllEaComponent } from './pages/show-all-ea/show-all-ea.component';
-import { ElectionResolver } from './pages/show-ea/resolver/election.resolver';
+import { ElectionAuthorityResolver } from './pages/show-ea/resolver/election-authority.resolver';
 import { ShowRtdElectionComponent } from './pages/show-rtd-election/show-rtd-election.component';
 
 const routes: Routes = [
@@ -30,7 +30,7 @@ const routes: Routes = [
     component: ShowEaComponent,
     canActivate: [AuthGuard, SuperAdminGuard],
     resolve: {
-      electionAuthority: ElectionResolver
+      electionAuthority: ElectionAuthorityResolver
     }
   },
   {

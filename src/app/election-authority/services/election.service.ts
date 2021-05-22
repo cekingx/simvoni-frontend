@@ -26,4 +26,20 @@ export class ElectionService {
         return response.data;
       }));
   }
+
+  getElectionById(electionId: number): Observable<any>
+  {
+    return this.http.get(`${baseUrl}/election-authority/election/${electionId}`)
+      .pipe(map((response: any) => {
+        return response.data;
+      }));
+  }
+
+  startElection(electionId: number): Observable<any>
+  {
+    return this.http.post(`${baseUrl}/election-authority/start-election/${electionId}`, {})
+      .pipe(map((response: any) => {
+        return response.data;
+      }));
+  }
 }

@@ -5,6 +5,8 @@ import { AuthGuard } from "@app/_helper/auth.guard";
 import { ElectionAuthorityGuard } from "@app/_helper/election-authority.guard";
 import { ShowAllElectionComponent } from './pages/show-all-election/show-all-election.component';
 import { CreateElectionComponent } from './pages/create-election/create-election.component';
+import { ShowElectionComponent } from './pages/show-election/show-election.component';
+import { ElectionResolver } from './pages/show-election/resolver/election.resolver';
 
 const routes: Routes = [
   {
@@ -21,6 +23,14 @@ const routes: Routes = [
     path: 'election-authority/election/create',
     component: CreateElectionComponent,
     canActivate: [AuthGuard, ElectionAuthorityGuard]
+  },
+  {
+    path: 'election-authority/election/:id',
+    component: ShowElectionComponent,
+    canActivate: [AuthGuard, ElectionAuthorityGuard],
+    resolve: {
+      election: ElectionResolver
+    }
   }
 ];
 

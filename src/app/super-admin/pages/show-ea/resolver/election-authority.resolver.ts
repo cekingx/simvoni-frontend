@@ -8,7 +8,7 @@ import { ElectionAuthorityService } from '../../../services/election-authority.s
 @Injectable({
   providedIn: 'root'
 })
-export class ElectionResolver implements Resolve<ElectionAuthority> {
+export class ElectionAuthorityResolver implements Resolve<ElectionAuthority> {
 
   constructor(
     private electionAuthorityService: ElectionAuthorityService,

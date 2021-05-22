@@ -15,6 +15,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ElectionService } from './services/election.service';
 import { ShowAllElectionComponent } from './pages/show-all-election/show-all-election.component';
 import { CreateElectionComponent } from './pages/create-election/create-election.component';
+import { ShowElectionComponent } from './pages/show-election/show-election.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { CreateElectionComponent } from './pages/create-election/create-election
     HeaderMobileComponent,
     BreadcrumbsComponent,
     ShowAllElectionComponent,
-    CreateElectionComponent
+    CreateElectionComponent,
+    ShowElectionComponent
   ],
   imports: [
     CommonModule,
