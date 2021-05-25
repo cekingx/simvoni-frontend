@@ -83,7 +83,22 @@
                   <div class="card-footer">
                     <div class="container">
                       <div class="row justify-content-between">
-                        <button type="button" (click)="startElection()" class="btn btn-lg btn-primary">Start Election</button>
+                        <!-- begin::start-election -->
+                        <button *ngIf="election.status == 'deployed'"
+                          [swal]="{ title: 'Start Election', text: election.name, showCancelButton: true, focusCancel: true }"
+                          (confirm)="startElection()"
+                          class="btn btn-primary mr-2">
+                          Start Election
+                        </button>
+                        <!-- end::start-election -->
+                        <!-- begin::end-election -->
+                        <button *ngIf="election.status == 'started'"
+                          [swal]="{ title: 'End Election', text: election.name, showCancelButton: true, focusCancel: true }"
+                          (confirm)="endElection()"
+                          class="btn btn-primary mr-2">
+                          End Election
+                        </button>
+                        <!-- end::end-election -->
                       </div>
                     </div>
                   </div>
@@ -93,6 +108,24 @@
               </div>
             </div>
           </div>
+          <!-- begin::started-election-swal -->
+          <swal
+            #startedElection
+            title="Sukses"
+            text="Election berhasil dimulai"
+            icon="success"
+            (confirm)="redirectBack()">
+          </swal>
+          <!-- end::started-election-swal -->
+          <!-- begin::ended-election-swal -->
+          <swal
+            #endedElection
+            title="Sukses"
+            text="Election berhasil dihentikan"
+            icon="success"
+            (confirm)="redirectBack()">
+          </swal>
+          <!-- end::ended-election-swal -->
         </div>
         <!-- end::Entry -->
       </div>

@@ -42,4 +42,12 @@ export class ElectionService {
         return response.data;
       }));
   }
+
+  endElection(electionId: number): Observable<any>
+  {
+    return this.http.post(`${baseUrl}/election-authority/end-election/${electionId}`, {})
+      .pipe(map((response: any) => {
+        return response.data;
+      }));
+  }
 }

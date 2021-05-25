@@ -61,6 +61,7 @@ export class ShowRtdElectionComponent implements OnInit {
 
   redirectBack()
   {
+    this.loading.showLoading();
     location.reload();
   }
 }

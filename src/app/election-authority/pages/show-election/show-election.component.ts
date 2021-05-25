@@ -1,10 +1,11 @@
 import { formatDate } from '@angular/common';
-import { Component, Inject, LOCALE_ID, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, LOCALE_ID, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ElectionService } from '@app/election-authority/services/election.service';
 import { LoadingService } from '@app/services/loading.service';
 import { BreadcrumbItem } from '@app/_models/breadcrumb-item';
 import { Election } from '@app/_models/election';
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -15,6 +16,7 @@ import { Subscription } from 'rxjs';
 export class ShowElectionComponent implements OnInit, OnDestroy {
   subscription1$: Subscription;
   subscription2$: Subscription;
+  subscription3$: Subscription;
   subscriptions: Subscription = new Subscription();
   election: Election;
   breadcrumbItems: BreadcrumbItem[] = [
@@ -27,6 +29,12 @@ export class ShowElectionComponent implements OnInit, OnDestroy {
       route: '/election-authority/election'
     }
   ];
+
+  @ViewChild('startedElection', {static: false})
+  public readonly startedElection: SwalComponent;
+
+  @ViewChild('endedElection', {static: false})
+  public readonly endedElection: SwalComponent;
 
   constructor(
     private route: ActivatedRoute,
@@ -56,8 +64,23 @@ export class ShowElectionComponent implements OnInit, OnDestroy {
     this.subscription2$ = this.electionService
       .startElection(this.election.id)
       .subscribe((data: any) => {
+        this.startedElection.fire();
         console.log(data);
       });
+  }
+
+  endElection() {
+    this.subscription3$ = this.electionService
+      .endElection(this.election.id)
+      .subscribe((data: any) => {
+        this.endedElection.fire();
+        console.log(data);
+      })
+  }
+
+  redirectBack() {
+    this.loadingService.showLoading();
+    location.reload();
   }
 
   pushSubscription() {
