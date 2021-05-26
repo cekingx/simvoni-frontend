@@ -19,6 +19,8 @@ export class ShowElectionComponent implements OnInit, OnDestroy {
   subscription3$: Subscription;
   subscriptions: Subscription = new Subscription();
   election: Election;
+  participantLink: string;
+
   breadcrumbItems: BreadcrumbItem[] = [
     {
       name: 'Dashboard',
@@ -50,6 +52,7 @@ export class ShowElectionComponent implements OnInit, OnDestroy {
         name: this.election.name,
         route: '/election-authority/election/' + this.election.id
       });
+      this.participantLink = '/election-authority/election/' + this.election.id + '/participant';
       this.loadingService.hideLoading();
     });
   }

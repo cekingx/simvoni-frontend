@@ -7,6 +7,8 @@ import { ShowAllElectionComponent } from './pages/show-all-election/show-all-ele
 import { CreateElectionComponent } from './pages/create-election/create-election.component';
 import { ShowElectionComponent } from './pages/show-election/show-election.component';
 import { ElectionResolver } from './pages/show-election/resolver/election.resolver';
+import { ShowParticipantComponent } from './pages/show-participant/show-participant.component';
+import { ElectionParticipantResolver } from './pages/show-participant/resolver/election-participant.resolver';
 
 const routes: Routes = [
   {
@@ -30,6 +32,14 @@ const routes: Routes = [
     canActivate: [AuthGuard, ElectionAuthorityGuard],
     resolve: {
       election: ElectionResolver
+    }
+  },
+  {
+    path: 'election-authority/election/:id/participant',
+    component: ShowParticipantComponent,
+    canActivate: [AuthGuard, ElectionAuthorityGuard],
+    resolve: {
+      participant: ElectionParticipantResolver
     }
   }
 ];

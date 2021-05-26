@@ -16,6 +16,7 @@ import { ElectionService } from './services/election.service';
 import { ShowAllElectionComponent } from './pages/show-all-election/show-all-election.component';
 import { CreateElectionComponent } from './pages/create-election/create-election.component';
 import { ShowElectionComponent } from './pages/show-election/show-election.component';
+import { ShowParticipantComponent } from './pages/show-participant/show-participant.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ShowElectionComponent } from './pages/show-election/show-election.compo
     BreadcrumbsComponent,
     ShowAllElectionComponent,
     CreateElectionComponent,
-    ShowElectionComponent
+    ShowElectionComponent,
+    ShowParticipantComponent
   ],
   imports: [
     CommonModule,

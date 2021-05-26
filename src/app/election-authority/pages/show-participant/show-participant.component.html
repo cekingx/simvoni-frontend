@@ -1,0 +1,97 @@
+<!--begin::Main-->
+<!--begin::Header Mobile-->
+<sv-ea-header-mobile></sv-ea-header-mobile>
+<!--end::Header Mobile-->
+<div class="d-flex flex-column flex-root">
+  <!--begin::Page-->
+  <div class="d-flex flex-row flex-column-fluid page">
+
+    <!--begin::Aside-->
+    <sv-ea-aside></sv-ea-aside>
+    <!--end::Aside-->
+
+    <!--begin::Wrapper-->
+    <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+      <!--begin::Header-->
+      <sv-ea-header></sv-ea-header>
+      <!--end::Header-->
+
+      <!--begin::Content-->
+      <div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
+        <!--begin::Subheader-->
+        <sv-ea-sub-header [breadcrumbItems]="breadcrumbItems"></sv-ea-sub-header>
+        <!--end::Subheader-->
+
+        <!-- begin::Entry -->
+        <div class="d-flex flex-column">
+          <div class="container">
+            <div class="card card-custom">
+              <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                <div class="card-title">
+                  <h3 class="card-label">Participant
+                    <span class="d-block text-muted pt-2 font-size-sm">{{ participants.electionName }}</span>
+                  </h3>
+                </div>
+                <div class="card-toolbar">
+                  <!--begin::Button-->
+                  <!--end::Button-->
+                </div>
+              </div>
+              <div class="card-body">
+                <!--begin::Search Form-->
+                <!-- Tambahkan search form disini -->
+                <!--end::Search Form-->
+
+                <!--begin: Datatable-->
+                <div class="datatable datatable-default datatable-bordered datatable-loaded">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let participant of participants.participant, let i = index">
+                        <td>{{ i+1 }}</td>
+                        <td>{{ participant.username }}</td>
+                        <td>
+                          <sv-label
+                            [state]="'primary'"
+                            [text]="participant.status"
+                          ></sv-label>
+                        </td>
+                        <td>
+                          <!-- begin::accept-participant -->
+                          <button class="btn btn-primary mr-2" (click)="acceptParticipant(participant.participationId)">Accept</button>
+                          <!-- end::accept-participant -->
+                          <!-- begin::reject-participant -->
+                          <button class="btn btn-danger mr-2" (click)="rejectParticipant(participant.participationId)">Reject</button>
+                          <!-- end::reject-participant -->
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- begin::pager -->
+                  <!-- end::pager -->
+                </div>
+                <!--end: Datatable-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end::Entry -->
+      </div>
+      <!--end::Content-->
+
+      <!--begin::Footer-->
+      <sv-footer></sv-footer>
+      <!--end::Footer-->
+    </div>
+    <!--end::Wrapper-->
+  </div>
+  <!--end::Page-->
+</div>
+<!--end::Main-->

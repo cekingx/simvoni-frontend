@@ -82,7 +82,10 @@
                   <!-- begin::Footer -->
                   <div class="card-footer">
                     <div class="container">
-                      <div class="row justify-content-between">
+                      <div class="row">
+                        <!-- begin::show-participant -->
+                        <a class="btn btn-secondary mr-2" routerLink="{{ participantLink }}">Show Participant</a>
+                        <!-- end::show-participant -->
                         <!-- begin::start-election -->
                         <button *ngIf="election.status == 'deployed'"
                           [swal]="{ title: 'Start Election', text: election.name, showCancelButton: true, focusCancel: true }"
@@ -95,7 +98,7 @@
                         <button *ngIf="election.status == 'started'"
                           [swal]="{ title: 'End Election', text: election.name, showCancelButton: true, focusCancel: true }"
                           (confirm)="endElection()"
-                          class="btn btn-primary mr-2">
+                          class="btn btn-danger mr-2">
                           End Election
                         </button>
                         <!-- end::end-election -->
