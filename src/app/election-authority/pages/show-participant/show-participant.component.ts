@@ -56,7 +56,10 @@ export class ShowParticipantComponent implements OnInit, OnDestroy {
   }
 
   rejectParticipant(participationId: number) {
-    console.log('Rejected');
+    this.loadingService.showLoading();
+    this.electionService.rejectParticipation(participationId).subscribe((data: any) => {
+      location.reload();
+    });
   }
 
   ngOnDestroy() {

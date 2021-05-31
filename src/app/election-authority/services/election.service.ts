@@ -51,6 +51,14 @@ export class ElectionService {
       }));
   }
 
+  rejectParticipation(participationId: number): Observable<any>
+  {
+    return this.http.post(`${baseUrl}/election-authority/election-participant/reject/${participationId}`, {})
+      .pipe(map((response: any) => {
+        return response.data;
+      }));
+  }
+
   startElection(electionId: number): Observable<any>
   {
     return this.http.post(`${baseUrl}/election-authority/start-election/${electionId}`, {})
