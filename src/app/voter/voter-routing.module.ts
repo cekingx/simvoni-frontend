@@ -6,7 +6,7 @@ import { VoterGuard } from "@app/_helper/voter.guard";
 
 const routes: Routes = [
   {
-    path: 'voter', 
+    path: '',
     component: DashboardComponent,
     canActivate: [AuthGuard, VoterGuard]
   }
