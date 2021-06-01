@@ -10,6 +10,8 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { HeaderComponent } from './header/header.component';
 import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
 import { SubHeaderComponent } from './sub-header/sub-header.component';
+import { AvailableElectionComponent } from './pages/available-election/available-election.component';
+import { FollowedElectionComponent } from './pages/followed-election/followed-election.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { SubHeaderComponent } from './sub-header/sub-header.component';
     HeaderComponent,
     HeaderMobileComponent,
     SubHeaderComponent,
-    DashboardComponent
+    DashboardComponent,
+    AvailableElectionComponent,
+    FollowedElectionComponent
   ],
   imports: [
     CommonModule,

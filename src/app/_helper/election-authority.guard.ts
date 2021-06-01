@@ -16,24 +16,24 @@ export class ElectionAuthorityGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree 
+  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
   {
     const currentUser = this.authService.currentUserValue;
 
     if(currentUser.role == 'election_authority') {
       return true;
     }
-    
+
     if(currentUser.role == 'super_admin') {
       this.router.navigate(['super-admin'])
       return false;
     } else if(currentUser.role == 'voter') {
-      this.router.navigate(['voter']);
+      this.router.navigate(['']);
       return false;
     } else {
       console.log('election-authority guard error');
       return false;
     }
   }
-  
+
 }

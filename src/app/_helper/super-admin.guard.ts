@@ -16,19 +16,19 @@ export class SuperAdminGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree 
+  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
   {
     const currentUser = this.authService.currentUserValue;
 
     if(currentUser.role == 'super_admin') {
       return true;
     }
-    
+
     if(currentUser.role == 'election_authority') {
       this.router.navigate(['election-authority'])
       return false;
     } else if(currentUser.role == 'voter') {
-      this.router.navigate(['voter']);
+      this.router.navigate(['']);
       return false;
     } else {
       console.log('super-admin guard error');
