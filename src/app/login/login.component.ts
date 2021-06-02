@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
     } else if(role == 'election_authority') {
       this.router.navigate(['election-authority'])
     } else if(role == 'voter') {
-      this.router.navigate(['voter']);
+      this.router.navigate(['']);
     } else {
       console.log('login component error');
     }

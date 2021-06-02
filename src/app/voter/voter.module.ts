@@ -12,6 +12,7 @@ import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
 import { SubHeaderComponent } from './sub-header/sub-header.component';
 import { AvailableElectionComponent } from './pages/available-election/available-election.component';
 import { FollowedElectionComponent } from './pages/followed-election/followed-election.component';
+import { ElectionService } from './services/election.service';
 
 
 @NgModule({
@@ -24,12 +25,15 @@ import { FollowedElectionComponent } from './pages/followed-election/followed-el
     SubHeaderComponent,
     DashboardComponent,
     AvailableElectionComponent,
-    FollowedElectionComponent
+    FollowedElectionComponent,
   ],
   imports: [
     CommonModule,
     VoterRoutingModule,
     SharedModule
+  ],
+  providers: [
+    ElectionService
   ]
 })
 export class VoterModule { }
