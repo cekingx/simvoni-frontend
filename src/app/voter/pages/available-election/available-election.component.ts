@@ -52,6 +52,6 @@ export class AvailableElectionComponent implements OnInit, OnDestroy {
   formattedDate(dateString: string)
   {
     const date = new Date(dateString);
-    return formatDate(date, 'dd MMM yyy', this.locale);
+    return formatDate(date, 'dd MMM yyyy', this.locale);
   }
 }

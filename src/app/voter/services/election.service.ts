@@ -17,4 +17,12 @@ export class ElectionService {
         return response.data;
       }));
   }
+
+  getFollowedElection(): Observable<any>
+  {
+    return this.http.get<Election[]>(`${baseUrl}/voter/followed-election`)
+      .pipe(map((response: any) => {
+        return response.data;
+      }));
+  }
 }

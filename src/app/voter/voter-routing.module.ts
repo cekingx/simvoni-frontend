@@ -6,6 +6,7 @@ import { VoterGuard } from "@app/_helper/voter.guard";
 import { AvailableElectionComponent } from './pages/available-election/available-election.component';
 import { FollowedElectionComponent } from './pages/followed-election/followed-election.component';
 import { AvailableElectionResolver } from './pages/available-election/resolver/available-election.resolver';
+import { FollowedElectionResolver } from './pages/followed-election/resolver/followed-election.resolver';
 
 const routes: Routes = [
   {
@@ -24,7 +25,10 @@ const routes: Routes = [
   {
     path: 'followed-election',
     component: FollowedElectionComponent,
-    canActivate: [AuthGuard, VoterGuard]
+    canActivate: [AuthGuard, VoterGuard],
+    resolve: {
+      followedElection: FollowedElectionResolver
+    }
   }
 ];
 
