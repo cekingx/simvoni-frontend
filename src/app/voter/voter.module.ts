@@ -13,6 +13,8 @@ import { SubHeaderComponent } from './sub-header/sub-header.component';
 import { AvailableElectionComponent } from './pages/available-election/available-election.component';
 import { FollowedElectionComponent } from './pages/followed-election/followed-election.component';
 import { ElectionService } from './services/election.service';
+import { FollowedElectionDetailComponent } from './pages/followed-election-detail/followed-election-detail.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 @NgModule({
@@ -26,11 +28,13 @@ import { ElectionService } from './services/election.service';
     DashboardComponent,
     AvailableElectionComponent,
     FollowedElectionComponent,
+    FollowedElectionDetailComponent,
   ],
   imports: [
     CommonModule,
     VoterRoutingModule,
-    SharedModule
+    SharedModule,
+    SweetAlert2Module
   ],
   providers: [
     ElectionService

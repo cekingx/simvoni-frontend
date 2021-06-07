@@ -7,6 +7,8 @@ import { AvailableElectionComponent } from './pages/available-election/available
 import { FollowedElectionComponent } from './pages/followed-election/followed-election.component';
 import { AvailableElectionResolver } from './pages/available-election/resolver/available-election.resolver';
 import { FollowedElectionResolver } from './pages/followed-election/resolver/followed-election.resolver';
+import { FollowedElectionDetailComponent } from './pages/followed-election-detail/followed-election-detail.component';
+import { FollowedElectionDetailResolver } from './pages/followed-election-detail/resolver/followed-election-detail.resolver';
 
 const routes: Routes = [
   {
@@ -28,6 +30,14 @@ const routes: Routes = [
     canActivate: [AuthGuard, VoterGuard],
     resolve: {
       followedElection: FollowedElectionResolver
+    }
+  },
+  {
+    path: 'followed-election/:id',
+    component: FollowedElectionDetailComponent,
+    canActivate: [AuthGuard, VoterGuard],
+    resolve: {
+      electionDetail: FollowedElectionDetailResolver
     }
   }
 ];
