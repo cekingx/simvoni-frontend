@@ -96,7 +96,15 @@
           </div>
         </div>
         <!-- end::Entry -->
-
+        <!-- begin::success-swal -->
+        <swal
+          #joinedElection
+          title="Sukses"
+          text="Election berhasil diikuti. Tunggu EA untuk melakukan approval"
+          icon="success"
+          (confirm)="redirectBack()"
+        ></swal>
+        <!-- end::success-swal -->
       </div>
       <!--end::Content-->
 

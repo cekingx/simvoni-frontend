@@ -1,10 +1,11 @@
-import { formatDate } from '@angular/common';
-import { Component, Inject, LOCALE_ID, OnDestroy, OnInit } from '@angular/core';
+import { formatDate, NgLocaleLocalization } from '@angular/common';
+import { Component, Inject, LOCALE_ID, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingService } from '@app/services/loading.service';
 import { ElectionService } from '@app/voter/services/election.service';
 import { BreadcrumbItem } from '@app/_models/breadcrumb-item';
 import { Election } from '@app/_models/election';
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -27,6 +28,9 @@ export class AvailableElectionComponent implements OnInit, OnDestroy {
     }
   ];
 
+  @ViewChild('joinedElection', {static: false})
+  public readonly joinedElection: SwalComponent;
+
   constructor(
     private route: ActivatedRoute,
     private loadingService: LoadingService,
@@ -42,9 +46,16 @@ export class AvailableElectionComponent implements OnInit, OnDestroy {
   }
 
   joinElection(electionId: number) {
+    this.loadingService.showLoading();
     this.electionService.joinElection(electionId).subscribe((data: any) => {
-      location.reload();
+      this.loadingService.hideLoading();
+      this.joinedElection.fire();
     });
+  }
+
+  redirectBack()
+  {
+    location.reload();
   }
 
   ngOnDestroy() {
