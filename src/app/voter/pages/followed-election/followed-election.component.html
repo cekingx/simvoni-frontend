@@ -65,7 +65,7 @@
                         <th scope="col">No.</th>
                         <th scope="col">Name</th>
                         <th scope="col">Periode</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">Participation Status</th>
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
@@ -75,10 +75,9 @@
                         <td>{{ election.name }}</td>
                         <td>{{ this.formattedDate(election.start) }} - {{ this.formattedDate(election.end) }}</td>
                         <td>
-                          <sv-label
-                            [state]="'primary'"
-                            [text]="election.status"
-                          ></sv-label>
+                          <sv-participation-status-label
+                            [status]="election.participation_status"
+                          ></sv-participation-status-label>
                         </td>
                         <td>
                           <!-- begin::icon-setting -->

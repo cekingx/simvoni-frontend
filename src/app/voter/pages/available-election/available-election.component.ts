@@ -2,6 +2,7 @@ import { formatDate } from '@angular/common';
 import { Component, Inject, LOCALE_ID, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingService } from '@app/services/loading.service';
+import { ElectionService } from '@app/voter/services/election.service';
 import { BreadcrumbItem } from '@app/_models/breadcrumb-item';
 import { Election } from '@app/_models/election';
 import { Subscription } from 'rxjs';
@@ -29,6 +30,7 @@ export class AvailableElectionComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private loadingService: LoadingService,
+    private electionService: ElectionService,
     @Inject(LOCALE_ID) private locale: string,
   ) { }
 
@@ -37,6 +39,12 @@ export class AvailableElectionComponent implements OnInit, OnDestroy {
       this.availableElection = data.availableElection;
       this.loadingService.hideLoading();
     })
+  }
+
+  joinElection(electionId: number) {
+    this.electionService.joinElection(electionId).subscribe((data: any) => {
+      location.reload();
+    });
   }
 
   ngOnDestroy() {

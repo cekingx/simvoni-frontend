@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { LoadingService } from '@app/services/loading.service';
 import { BreadcrumbItem } from '@app/_models/breadcrumb-item';
 import { Election } from '@app/_models/election';
+import { FollowedElection } from '@app/_models/followed-electon';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -14,7 +15,7 @@ import { Subscription } from 'rxjs';
 export class FollowedElectionComponent implements OnInit, OnDestroy {
   subscription1$: Subscription;
   subscriptions: Subscription = new Subscription();
-  followedElection: Election[];
+  followedElection: FollowedElection[];
   breadcrumbItems: BreadcrumbItem[] = [
     {
       name: 'Dashboard',
@@ -35,7 +36,6 @@ export class FollowedElectionComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription1$ = this.route.data.subscribe((data: any) => {
       this.followedElection = data.followedElection;
-      console.log(data);
       this.loadingService.hideLoading();
     });
   }

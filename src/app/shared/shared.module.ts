@@ -5,6 +5,8 @@ import { DisplayDateComponent } from './display-date/display-date.component';
 import { FooterComponent } from './footer/footer.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { LabelComponent } from './label/label.component';
+import { ElectionStatusLabelComponent } from './election-status-label/election-status-label.component';
+import { ParticipationStatusLabelComponent } from './participation-status-label/participation-status-label.component';
 
 
 
@@ -13,7 +15,9 @@ import { LabelComponent } from './label/label.component';
     LogoutComponent,
     DisplayDateComponent,
     FooterComponent,
-    LabelComponent
+    LabelComponent,
+    ElectionStatusLabelComponent,
+    ParticipationStatusLabelComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +27,9 @@ import { LabelComponent } from './label/label.component';
     LogoutComponent,
     DisplayDateComponent,
     FooterComponent,
-    LabelComponent
+    LabelComponent,
+    ElectionStatusLabelComponent,
+    ParticipationStatusLabelComponent,
   ]
 })
 export class SharedModule { }
