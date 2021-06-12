@@ -1,6 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { formatDate } from '@angular/common';
+import { Component, Inject, LOCALE_ID, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { LoadingService } from '@app/services/loading.service';
 import { BreadcrumbItem } from '@app/_models/breadcrumb-item';
 import { Election } from '@app/_models/election';
+import { ElectionDetail } from '@app/_models/election-detail';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -11,8 +15,9 @@ import { Subscription } from 'rxjs';
 export class FollowedElectionDetailComponent implements OnInit, OnDestroy {
   subscription1$: Subscription;
   subscriptions: Subscription = new Subscription();
-  election: Election;
-  candidates = [1,2,3,4,5];
+  election: ElectionDetail;
+  misiHtml: string;
+  pengalamanHtml: string;
   breadcrumbItems: BreadcrumbItem[] = [
     {
       name: 'Dashboard',
@@ -23,9 +28,22 @@ export class FollowedElectionDetailComponent implements OnInit, OnDestroy {
       route: '/followed-election'
     }
   ];
-  constructor() { }
+
+  constructor(
+    private route: ActivatedRoute,
+    private loadingService: LoadingService,
+    @Inject(LOCALE_ID) private locale: string,
+  ) { }
 
   ngOnInit() {
+    this.subscription1$ = this.route.data.subscribe((data: any) => {
+      this.election = data.electionDetail;
+      this.breadcrumbItems.push({
+        name: this.election.name,
+        route: '/followed-election/' + this.election.id,
+      });
+      this.loadingService.hideLoading();
+    })
   }
 
   ngOnDestroy() {
@@ -36,5 +54,22 @@ export class FollowedElectionDetailComponent implements OnInit, OnDestroy {
 
   pushSubscription() {
     this.subscriptions.add(this.subscription1$);
+  }
+
+  makeHtml(stringArray: string[]) {
+    let final;
+    let child: string = '';
+    stringArray.forEach((data: string, index: number) => {
+      let html = `<p>${index+1}. ${data}</p>`;
+      child = child + html;
+    });
+    final = `<div>${child}</div>`;
+    return final;
+  }
+
+  formattedDate(dateString: string)
+  {
+    const date = new Date(dateString);
+    return formatDate(date, 'dd MMM yyyy', this.locale);
   }
 }

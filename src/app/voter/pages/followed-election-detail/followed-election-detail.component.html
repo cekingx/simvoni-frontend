@@ -36,18 +36,17 @@
                     <div class="card-body text-center pt-4">
                       <!--begin::Name-->
                       <div class="my-2">
-                        <p class="text-dark font-weight-bold font-size-h3">Pemira HMTI 2021</p>
+                        <p class="text-dark font-weight-bold font-size-h3">{{ election.name }}</p>
                       </div>
                       <!--end::Name-->
                       <!--begin::Label-->
-                      <span
-                        class="label label-inline label-lg label-light-warning btn-sm font-weight-bold">Started</span>
+                      <sv-election-status-label [status]="election.status"></sv-election-status-label>
                       <!--end::Label-->
                       <!-- begin::Date -->
-                      <p class="font-weight-bold">21 Feb 2021 - 23 Feb 2021</p>
+                      <p class="font-weight-bold">{{ formattedDate(election.start) }} - {{ formattedDate(election.end) }}</p>
                       <!-- end::Date -->
                       <!-- begin::Desc -->
-                      <p>Pemilihan Ketua HMTI untuk periode 2022</p>
+                      <p>{{ election.description }}</p>
                       <!-- end::Desc -->
                     </div>
                     <!--end::Body-->
@@ -62,11 +61,11 @@
               <!--begin::Row-->
               <div class="row">
                 <!--begin::Col-->
-                <div *ngFor="let candidate of candidates" class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                <div *ngFor="let candidate of election.candidates, let i = index" class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                   <!--begin::Card-->
                   <div class="card card-custom gutter-b card-stretch">
                     <div class="card-header justify-content-center">
-                      <div class="card-title">1</div>
+                      <div class="card-title">{{ i+1 }}</div>
                     </div>
                     <!--begin::Body-->
                     <div class="card-body text-center pt-4">
@@ -79,12 +78,12 @@
                       <!--end::User-->
                       <!--begin::Name-->
                       <div class="my-2">
-                        <p class="text-dark font-weight-bold font-size-h4">Gondil Sky</p>
+                        <p class="text-dark font-weight-bold font-size-h4">{{ candidate.name }}</p>
                       </div>
                       <!--end::Name-->
                       <!-- begin::Visi -->
                       <div class="my-2">
-                        <p>Menjadikan prodi ini semakin hepi dan jaya</p>
+                        <p>{{ candidate.visi }}</p>
                       </div>
                       <!-- end::Visi -->
                       <div class="flex-column">
@@ -93,24 +92,14 @@
                             class="my-2 flex-grow-1 mr-2 btn btn-secondary"
                             [swal]="{
                               title: 'Misi',
-                              html: '
-                              <div>
-                                <p>1. Makan</p>
-                                <p>2. Minum</p>
-                              </div>
-                              '
+                              html: makeHtml(candidate.misi)
                             }"
                           >Misi</button>
                           <button
                             class="my-2 flex-grow-1 btn btn-secondary"
                             [swal]="{
                               title: 'Pengalaman',
-                              html: '
-                              <div>
-                                <p>1. Makan</p>
-                                <p>2. Minum</p>
-                              </div>
-                              '
+                              html: makeHtml(candidate.pengalaman)
                             }"
                           >Pengalaman</button>
                         </div>

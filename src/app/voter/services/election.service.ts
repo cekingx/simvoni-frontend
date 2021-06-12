@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Election } from '@app/_models/election';
+import { ElectionDetail } from '@app/_models/election-detail';
 import { FollowedElection } from '@app/_models/followed-electon';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -30,6 +31,14 @@ export class ElectionService {
   getEndedElection(): Observable<any>
   {
     return this.http.get<Election[]>(`${baseUrl}/voter/ended-election`)
+      .pipe(map((response: any) => {
+        return response.data;
+      }));
+  }
+
+  getElectionDetail(electionId: number): Observable<any>
+  {
+    return this.http.get<ElectionDetail>(`${baseUrl}/voter/election-detail/${electionId}`)
       .pipe(map((response: any) => {
         return response.data;
       }));
