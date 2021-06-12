@@ -9,6 +9,8 @@ import { AvailableElectionResolver } from './pages/available-election/resolver/a
 import { FollowedElectionResolver } from './pages/followed-election/resolver/followed-election.resolver';
 import { FollowedElectionDetailComponent } from './pages/followed-election-detail/followed-election-detail.component';
 import { FollowedElectionDetailResolver } from './pages/followed-election-detail/resolver/followed-election-detail.resolver';
+import { EndedElectionComponent } from './pages/ended-election/ended-election.component';
+import { EndedElectionResolver } from './pages/ended-election/resolver/ended-election.resolver';
 
 const routes: Routes = [
   {
@@ -38,6 +40,14 @@ const routes: Routes = [
     canActivate: [AuthGuard, VoterGuard],
     resolve: {
       electionDetail: FollowedElectionDetailResolver
+    }
+  },
+  {
+    path: 'ended-election',
+    component: EndedElectionComponent,
+    canActivate: [AuthGuard, VoterGuard],
+    resolve: {
+      endedElection: EndedElectionResolver
     }
   }
 ];

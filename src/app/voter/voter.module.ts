@@ -15,6 +15,7 @@ import { FollowedElectionComponent } from './pages/followed-election/followed-el
 import { ElectionService } from './services/election.service';
 import { FollowedElectionDetailComponent } from './pages/followed-election-detail/followed-election-detail.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { EndedElectionComponent } from './pages/ended-election/ended-election.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     AvailableElectionComponent,
     FollowedElectionComponent,
     FollowedElectionDetailComponent,
+    EndedElectionComponent,
   ],
   imports: [
     CommonModule,

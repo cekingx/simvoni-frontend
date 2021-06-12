@@ -28,8 +28,8 @@
             <div class="card card-custom">
               <div class="card-header flex-wrap border-0 pt-6 pb-0">
                 <div class="card-title">
-                  <h3 class="card-label">Followed Election
-                    <span class="d-block text-muted pt-2 font-size-sm">Election yang anda ikuti</span>
+                  <h3 class="card-label">Ended Election
+                    <span class="d-block text-muted pt-2 font-size-sm">Election yang telah berhenti</span>
                   </h3>
                 </div>
               </div>
@@ -46,23 +46,21 @@
                         <th scope="col">No.</th>
                         <th scope="col">Name</th>
                         <th scope="col">Periode</th>
-                        <th scope="col">Participation Status</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let election of followedElection, let i = index">
+                      <tr *ngFor="let election of endedElection, let i = index">
                         <td>{{ i+1 }}</td>
                         <td>{{ election.name }}</td>
                         <td>{{ this.formattedDate(election.start) }} - {{ this.formattedDate(election.end) }}</td>
                         <td>
-                          <sv-participation-status-label
-                            [status]="election.participation_status"
-                          ></sv-participation-status-label>
+                          <sv-election-status-label [status]="election.status"></sv-election-status-label>
                         </td>
                         <td>
                           <!-- begin::icon-setting -->
-                          <a [routerLink]="['/election-authority/election/', election.id]" class="btn btn-sm btn-clean btn-icon mr-2">
+                          <a [routerLink]="['/ended-election/', election.id]" class="btn btn-sm btn-clean btn-icon mr-2">
                             <span class="svg-icon svg-icon-md">
                               <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-04-03-014522/theme/html/demo1/dist/../src/media/svg/icons/General/Settings-2.svg--><svg
                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

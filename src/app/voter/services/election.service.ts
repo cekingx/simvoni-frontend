@@ -27,6 +27,14 @@ export class ElectionService {
       }));
   }
 
+  getEndedElection(): Observable<any>
+  {
+    return this.http.get<Election[]>(`${baseUrl}/voter/ended-election`)
+      .pipe(map((response: any) => {
+        return response.data;
+      }));
+  }
+
   joinElection(electionId: number): Observable<any>
   {
     return this.http.post<Election>(`${baseUrl}/voter/join/${electionId}`, {})
