@@ -103,8 +103,8 @@
                             }"
                           >Pengalaman</button>
                         </div>
-                        <div class="flex-row">
-                          <button class="col-12 my-2 btn btn-lg btn-primary">Vote</button>
+                        <div *ngIf="election.status == 'started' && election.participation_status == 'accepted'" class="flex-row">
+                          <button class="col-12 my-2 btn btn-lg btn-primary" (click)="voteCandidate(candidate.id)">Vote</button>
                         </div>
                       </div>
                     </div>

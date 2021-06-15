@@ -2,6 +2,7 @@ import { formatDate } from '@angular/common';
 import { Component, Inject, LOCALE_ID, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingService } from '@app/services/loading.service';
+import { ElectionService } from '@app/voter/services/election.service';
 import { BreadcrumbItem } from '@app/_models/breadcrumb-item';
 import { Election } from '@app/_models/election';
 import { ElectionDetail } from '@app/_models/election-detail';
@@ -14,6 +15,7 @@ import { Subscription } from 'rxjs';
 })
 export class FollowedElectionDetailComponent implements OnInit, OnDestroy {
   subscription1$: Subscription;
+  subscription2$: Subscription;
   subscriptions: Subscription = new Subscription();
   election: ElectionDetail;
   misiHtml: string;
@@ -32,6 +34,7 @@ export class FollowedElectionDetailComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private loadingService: LoadingService,
+    private electionService: ElectionService,
     @Inject(LOCALE_ID) private locale: string,
   ) { }
 
@@ -54,6 +57,7 @@ export class FollowedElectionDetailComponent implements OnInit, OnDestroy {
 
   pushSubscription() {
     this.subscriptions.add(this.subscription1$);
+    this.subscriptions.add(this.subscription2$);
   }
 
   makeHtml(stringArray: string[]) {
@@ -65,6 +69,14 @@ export class FollowedElectionDetailComponent implements OnInit, OnDestroy {
     });
     final = `<div>${child}</div>`;
     return final;
+  }
+
+  voteCandidate(candidateId: number) {
+    this.loadingService.showLoading();
+    this.subscription2$ = this.electionService.voteOnElection(this.election.id, candidateId).subscribe((data: any) => {
+      this.loadingService.hideLoading();
+      location.reload();
+    })
   }
 
   formattedDate(dateString: string)
