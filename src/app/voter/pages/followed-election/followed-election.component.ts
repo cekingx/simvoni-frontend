@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { LoadingService } from '@app/services/loading.service';
 import { BreadcrumbItem } from '@app/_models/breadcrumb-item';
 import { Election } from '@app/_models/election';
-import { FollowedElection } from '@app/_models/followed-electon';
+import { FollowedElection } from '@app/_models/followed-election';
 import { Subscription } from 'rxjs';
 
 @Component({

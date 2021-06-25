@@ -3,6 +3,7 @@ import { Component, Inject, LOCALE_ID, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingService } from '@app/services/loading.service';
 import { BreadcrumbItem } from '@app/_models/breadcrumb-item';
+import { EndedElection } from '@app/_models/ended-election';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -13,7 +14,7 @@ import { Subscription } from 'rxjs';
 export class EndedElectionDetailComponent implements OnInit, OnDestroy {
   subscription1$: Subscription;
   subscriptions: Subscription = new Subscription();
-  candidates = [1,2,3,4];
+  election: EndedElection;
   breadcrumbItems: BreadcrumbItem[] = [
     {
       name: 'Dashboard',
@@ -33,6 +34,11 @@ export class EndedElectionDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscription1$ = this.route.data.subscribe((data: any) => {
+      this.election = data.electionDetail;
+      this.breadcrumbItems.push({
+        name: this.election.name,
+        route: '/ended-election/' + this.election.id,
+      });
       this.loadingService.hideLoading();
     })
   }

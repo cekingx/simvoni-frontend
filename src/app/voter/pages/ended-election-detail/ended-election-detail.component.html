@@ -37,17 +37,17 @@
                     <div class="card-body text-center pt-4">
                       <!--begin::Name-->
                       <div class="my-2">
-                        <p class="text-dark font-weight-bold font-size-h3">Some Election</p>
+                        <p class="text-dark font-weight-bold font-size-h3">{{ election.name }}</p>
                       </div>
                       <!--end::Name-->
                       <!--begin::Label-->
-                      <sv-election-status-label [status]="'ended'"></sv-election-status-label>
+                      <sv-election-status-label [status]="election.status"></sv-election-status-label>
                       <!--end::Label-->
                       <!-- begin::Date -->
-                      <p class="font-weight-bold">{{ formattedDate('2021-06-23') }} - {{ formattedDate('2021-06-24') }}</p>
+                      <p class="font-weight-bold">{{ formattedDate(election.start) }} - {{ formattedDate(election.end) }}</p>
                       <!-- end::Date -->
                       <!-- begin::Desc -->
-                      <p>Some election description</p>
+                      <p>{{ election.description }}</p>
                       <!-- end::Desc -->
                     </div>
                     <!--end::Body-->
@@ -64,7 +64,7 @@
                       <div class="my-2">Pemenang</div>
                       <!--begin::Name-->
                       <div class="my-2">
-                        <p class="text-dark font-weight-bold font-size-h2">Candidate Names</p>
+                        <p class="text-dark font-weight-bold font-size-h2">{{ election.winner }}</p>
                       </div>
                       <!--end::Name-->
                     </div>
@@ -81,7 +81,7 @@
               <!--begin::Row-->
               <div class="row">
                 <!--begin::Col-->
-                <div *ngFor="let candidate of candidates, let i = index" class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                <div *ngFor="let candidate of election.candidates, let i = index" class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                   <!--begin::Card-->
                   <div class="card card-custom gutter-b card-stretch">
                     <div class="card-header justify-content-center">
@@ -98,12 +98,12 @@
                       <!--end::User-->
                       <!--begin::Name-->
                       <div class="my-2">
-                        <p class="text-dark font-weight-bold font-size-h4">Candidate Names</p>
+                        <p class="text-dark font-weight-bold font-size-h4">{{ candidate.name }}</p>
                       </div>
                       <!--end::Name-->
                       <!-- begin::voting-count -->
                       <div class="my-2">
-                        <p>5 Suara</p>
+                        <p>{{ candidate.vote_count }} Suara</p>
                       </div>
                       <!-- end::voting-count -->
                     </div>

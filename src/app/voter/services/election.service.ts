@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Election } from '@app/_models/election';
 import { ElectionDetail } from '@app/_models/election-detail';
-import { FollowedElection } from '@app/_models/followed-electon';
+import { EndedElection } from '@app/_models/ended-election';
+import { FollowedElection } from '@app/_models/followed-election';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { baseUrl } from 'src/environments/environment';
@@ -39,6 +40,14 @@ export class ElectionService {
   getElectionDetail(electionId: number): Observable<any>
   {
     return this.http.get<ElectionDetail>(`${baseUrl}/voter/election-detail/${electionId}`)
+      .pipe(map((response: any) => {
+        return response.data;
+      }));
+  }
+
+  getEndedElectionDetail(electionId: number): Observable<any>
+  {
+    return this.http.get<EndedElection>(`${baseUrl}/voter/ended-election-detail/${electionId}`)
       .pipe(map((response: any) => {
         return response.data;
       }));
