@@ -1,3 +1,5 @@
+import { Candidate } from "./candidate";
+
 export class Election {
   id: number;
   name: string;
@@ -6,4 +8,5 @@ export class Election {
   end: string;
   status: string;
   ea: string;
+  candidates: Array<Candidate>
 }
