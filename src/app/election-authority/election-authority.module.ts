@@ -17,6 +17,7 @@ import { ShowAllElectionComponent } from './pages/show-all-election/show-all-ele
 import { CreateElectionComponent } from './pages/create-election/create-election.component';
 import { ShowElectionComponent } from './pages/show-election/show-election.component';
 import { ShowParticipantComponent } from './pages/show-participant/show-participant.component';
+import { CandidateListComponent } from './candidate-list/candidate-list.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ShowParticipantComponent } from './pages/show-participant/show-particip
     ShowAllElectionComponent,
     CreateElectionComponent,
     ShowElectionComponent,
-    ShowParticipantComponent
+    ShowParticipantComponent,
+    CandidateListComponent
   ],
   imports: [
     CommonModule,

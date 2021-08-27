@@ -28,7 +28,7 @@
             <div class="row justify-content-center">
               <div class="col-lg-6">
                 <!--begin::Charts Widget 1-->
-                <div class="card card-custom">
+                <div class="card card-custom mb-4">
                   <!--begin::Header-->
                   <div class="card-header h-auto border-0">
                     <!--begin::Title-->
@@ -81,13 +81,20 @@
                   <!--end::Body-->
                   <!-- begin::Footer -->
                   <div class="card-footer">
-                    <div class="container">
-                      <div class="row">
+                    <div class="container row">
                         <!-- begin::show-participant -->
                         <a class="btn btn-secondary mr-2" routerLink="{{ participantLink }}">Show Participant</a>
                         <!-- end::show-participant -->
+                        <!-- begin::ready-to-deploy -->
+                        <button *ngIf="election.status == electionStatus.draft"
+                          [swal]="{ title: 'Ready to Deploy', text: election.name, showCancelButton: true, focusCancel: true }"
+                          (confirm)="readyToDeploy()"
+                          class="btn btn-primary mr-2">
+                          Ready
+                        </button>
+                        <!-- end::ready-to-deploy -->
                         <!-- begin::start-election -->
-                        <button *ngIf="election.status == 'deployed'"
+                        <button *ngIf="election.status == electionStatus.deployed"
                           [swal]="{ title: 'Start Election', text: election.name, showCancelButton: true, focusCancel: true }"
                           (confirm)="startElection()"
                           class="btn btn-primary mr-2">
@@ -95,19 +102,21 @@
                         </button>
                         <!-- end::start-election -->
                         <!-- begin::end-election -->
-                        <button *ngIf="election.status == 'started'"
+                        <button *ngIf="election.status == electionStatus.started"
                           [swal]="{ title: 'End Election', text: election.name, showCancelButton: true, focusCancel: true }"
                           (confirm)="endElection()"
                           class="btn btn-danger mr-2">
                           End Election
                         </button>
                         <!-- end::end-election -->
-                      </div>
                     </div>
                   </div>
                   <!-- end::Footer -->
                 </div>
                 <!--end::Charts Widget 1-->
+                <!-- begin::candidate -->
+                <sv-ea-candidate-list [candidates]="election.candidates"></sv-ea-candidate-list>
+                <!-- end::candidate -->
               </div>
             </div>
           </div>

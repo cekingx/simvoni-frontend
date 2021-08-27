@@ -7,6 +7,7 @@ import { BreadcrumbItem } from '@app/_models/breadcrumb-item';
 import { Election } from '@app/_models/election';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { Subscription } from 'rxjs';
+import { ElectionStatus } from "@app/_helper/election-status.enum";
 
 @Component({
   selector: 'app-show-election',
@@ -20,6 +21,8 @@ export class ShowElectionComponent implements OnInit, OnDestroy {
   subscriptions: Subscription = new Subscription();
   election: Election;
   participantLink: string;
+  addCandidateLink: string;
+  electionStatus: any;
 
   breadcrumbItems: BreadcrumbItem[] = [
     {
@@ -43,7 +46,9 @@ export class ShowElectionComponent implements OnInit, OnDestroy {
     private loadingService: LoadingService,
     private electionService: ElectionService,
     @Inject(LOCALE_ID) private locale: string
-  ) { }
+  ) {
+    this.electionStatus = ElectionStatus;
+  }
 
   ngOnInit() {
     this.subscription1$ = this.route.data.subscribe((data: any) => {
@@ -53,6 +58,7 @@ export class ShowElectionComponent implements OnInit, OnDestroy {
         route: '/election-authority/election/' + this.election.id
       });
       this.participantLink = '/election-authority/election/' + this.election.id + '/participant';
+      this.addCandidateLink = '/election-authority/election/' + this.election.id + '/add-candidate'
       this.loadingService.hideLoading();
     });
   }
@@ -79,6 +85,10 @@ export class ShowElectionComponent implements OnInit, OnDestroy {
         this.endedElection.fire();
         console.log(data);
       })
+  }
+
+  readyToDeploy() {
+
   }
 
   redirectBack() {
