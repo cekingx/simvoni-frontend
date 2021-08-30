@@ -1,4 +1,4 @@
-<div *ngFor="let candidate of candidates, let i = index" class="card card-custom mb-2">
+<div *ngFor="let candidate of election.candidates, let i = index" class="card card-custom mb-2">
   <div class="card-body">
     <div class="">
       <!--begin::Section-->
@@ -30,5 +30,5 @@
 </div>
 
 <div class="card card-custom">
-  <button class="btn btn-lg btn-outline-secondary">Add Candidate</button>
+  <a [routerLink]="['/election-authority/election/' + election.id + '/add-candidate']" class="btn btn-lg btn-outline-secondary">Add Candidate</a>
 </div>
