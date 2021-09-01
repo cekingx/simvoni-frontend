@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ElectionService } from '@app/election-authority/services/election.service';
 import { LoadingService } from '@app/services/loading.service';
@@ -27,15 +28,15 @@ export class AddCandidateComponent implements OnInit, OnDestroy {
       route: '/election-authority/election'
     }
   ];
-  misi: Array<string> = [
-    'menjaga jarak',
-    'mencuci tangan'
-  ]
+  misi: Array<string> = []
   pengalaman: Array<string> = [
     'makan',
     'mandi',
     'tidur'
   ]
+  addCandidateForm: FormGroup;
+  isSubmitted = false;
+  error = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -43,6 +44,7 @@ export class AddCandidateComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.initForm();
     this.subscription1$ = this.route.data.subscribe((data: any) => {
       this.election = data.election;
       this.breadcrumbItems.push(
@@ -65,12 +67,27 @@ export class AddCandidateComponent implements OnInit, OnDestroy {
     this.subscriptions.unsubscribe();
   }
 
+  initForm() {
+    this.addCandidateForm = new FormGroup({
+      name: new FormControl('', [Validators.required]),
+      visi: new FormControl('', [Validators.required]),
+      misi: new FormControl(),
+      pengalaman: new FormControl()
+    });
+  }
+
+  get formControl() {
+    return this.addCandidateForm.controls;
+  }
+
   addCandidate() {}
 
   redirectBack() {}
 
   addMisi() {
-    this.misi.push('misi');
+    let misi = this.formControl.misi.value;
+    this.formControl.misi.setValue('');
+    this.misi.push(misi);
   }
 
   addPengalaman() {
