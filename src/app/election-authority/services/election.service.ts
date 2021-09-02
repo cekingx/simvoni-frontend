@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AddCandidateDto } from '@app/_models/candidate';
 import { CreateElectionDto } from '@app/_models/create-election.dto';
 import { Election } from '@app/_models/election';
 import { Observable } from 'rxjs';
@@ -22,6 +23,14 @@ export class ElectionService {
   createElection(createElectionDto: CreateElectionDto): Observable<any>
   {
     return this.http.post(`${baseUrl}/election-authority/election`, createElectionDto)
+      .pipe(map((response: any) => {
+        return response.data;
+      }));
+  }
+
+  addCandidate(addCandidateDto: AddCandidateDto, electionId: number): Observable<any>
+  {
+    return this.http.post(`${baseUrl}/election-authority/add-candidate/${electionId}`, addCandidateDto)
       .pipe(map((response: any) => {
         return response.data;
       }));

@@ -47,17 +47,39 @@
                   <!--end::Header-->
                   <!--begin::Body-->
                   <div class="card-body" style="position: relative;">
-                    <form [formGroup]="addCandidateForm" class="form">
+                    <form [formGroup]="addCandidateForm" (ngSubmit)="onSubmit()" class="form">
                       <!-- begin::name -->
                       <div class="form-group">
                         <label>Nama</label>
-                        <input placeholder="Tambahkan nama" type="text" class="form-control form-control-lg">
+                        <input
+                          formControlName="name"
+                          [ngClass]="{
+                            'is-invalid': isSubmitted && formControl.name.invalid,
+                            'is-valid': isSubmitted && formControl.name.valid
+                          }"
+                          placeholder="Tambahkan nama"
+                          type="text"
+                          class="form-control form-control-lg">
+                        <div
+                          *ngIf="isSubmitted && formControl.name.errors"
+                          class="invalid-feedback">Name is required</div>
                       </div>
                       <!-- end::name -->
                       <!-- begin::visi -->
                       <div class="form-group">
                         <label>Visi</label>
-                        <input placeholder="Tambahkan visi" type="text" class="form-control form-control-lg">
+                        <input
+                          formControlName="visi"
+                          [ngClass]="{
+                            'is-invalid': isSubmitted && formControl.visi.invalid,
+                            'is-valid': isSubmitted && formControl.visi.valid
+                          }"
+                          placeholder="Tambahkan visi"
+                          type="text"
+                          class="form-control form-control-lg">
+                        <div
+                          *ngIf="isSubmitted && formControl.name.errors"
+                          class="invalid-feedback">Visi is required</div>
                       </div>
                       <!-- end::visi -->
                       <!-- begin::misi -->
@@ -92,29 +114,20 @@
                       </div>
                       <!-- end::list-misi -->
                       <div class="form-group input-group">
-                        <input placeholder="Tambahkan pengalaman" type="text" class="form-control form-control-lg">
+                        <input
+                          formControlName="pengalaman"
+                          placeholder="Tambahkan pengalaman"
+                          type="text"
+                          class="form-control form-control-lg">
                         <div class="input-group-append">
                           <button (click)="addPengalaman()" class="btn btn-primary" type="button" id="button-addon2"><i class="flaticon2-add icon-lg"></i></button>
                         </div>
                       </div>
                       <!-- end::pengalaman -->
+                      <button class="btn btn-primary btn-lg" type="submit">Save</button>
                     </form>
                   </div>
                   <!--end::Body-->
-                  <!-- begin::Footer -->
-                  <div class="card-footer">
-                    <div class="container row">
-                        <!-- begin::ready-to-deploy -->
-                        <button
-                          [swal]="{ title: 'Ready to Deploy', text: 'name', showCancelButton: true, focusCancel: true }"
-                          (confirm)="addCandidate()"
-                          class="btn btn-primary mr-2">
-                          Ready
-                        </button>
-                        <!-- end::ready-to-deploy -->
-                    </div>
-                  </div>
-                  <!-- end::Footer -->
                 </div>
                 <!--end::Charts Widget 1-->
               </div>
@@ -122,13 +135,21 @@
           </div>
           <!-- begin::added-candidate -->
           <swal
-            #startedElection
+            #addedCandidate
             title="Sukses"
-            text="Kadidate berhasil ditambahkan"
+            text="Kadidat berhasil ditambahkan"
             icon="success"
             (confirm)="redirectBack()">
           </swal>
           <!-- end::added-candidate -->
+          <!-- begin::error-swal -->
+          <swal
+            #errorSwal
+            title="Error"
+            text="{{ error }}"
+            icon="error">
+          </swal>
+          <!-- end::error-swal -->
         </div>
         <!-- end::Entry -->
       </div>
