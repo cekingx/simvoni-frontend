@@ -29,6 +29,6 @@
   </div>
 </div>
 
-<div class="card card-custom">
+<div *ngIf="this.election.status == 'draft'" class="card card-custom">
   <a [routerLink]="['/election-authority/election/' + election.id + '/add-candidate']" class="btn btn-lg btn-outline-secondary">Add Candidate</a>
 </div>
