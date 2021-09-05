@@ -68,12 +68,34 @@
                   <div class="card-footer">
                     <div class="container">
                       <div class="row justify-content-between">
-                        <button type="button" (click)="setWalletAddress()" class="btn btn-lg btn-outline-primary">Set Wallet Address</button>
+                        <button
+                          type="button"
+                          [swal]="{ title: 'Set Wallet Address', text: electionAuthority.name, showCancelButton: true, focusCancel: true }"
+                          (confirm)="setWalletAddress()"
+                          class="btn btn-lg btn-outline-primary">
+                          Set Wallet Address
+                        </button>
                         <button type="reset" class="btn btn-lg btn-outline-primary">Reset Password</button>
                       </div>
                     </div>
                   </div>
                   <!-- end::Footer -->
+                  <!-- begin::success-swal -->
+                  <swal
+                    #createdWalletAddress
+                    title="Sukses"
+                    text="Wallet Address berhasil dibuat"
+                    icon="success">
+                  </swal>
+                  <!-- end::success-swal -->
+                  <!-- begin::error-swal -->
+                  <swal
+                    #errorSwal
+                    title="Error"
+                    text="{{ error }}"
+                    icon="error">
+                  </swal>
+                  <!-- end::error-swal -->
                 </div>
                 <!--end::Charts Widget 1-->
               </div>

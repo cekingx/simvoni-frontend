@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { LoadingService } from '@app/services/loading.service';
 import { ElectionAuthorityService } from '@app/super-admin/services/election-authority.service';
 import { BreadcrumbItem } from '@app/_models/breadcrumb-item';
 import { ElectionAuthority } from '@app/_models/ea';
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -27,6 +28,13 @@ export class ShowEaComponent implements OnInit, OnDestroy {
       route: '/super-admin/election-authority'
     }
   ];
+  error = '';
+
+  @ViewChild('createdWalletAddress', { static: false })
+  public readonly createdWalletAddress: SwalComponent;
+
+  @ViewChild('errorSwal', { static: false })
+  public readonly errorSwal: SwalComponent;
 
   constructor(
     private route: ActivatedRoute,
@@ -62,9 +70,17 @@ export class ShowEaComponent implements OnInit, OnDestroy {
     this.subscription2$ = this
       .electionAuthorityService
       .setWalletAddress(this.electionAuthority.id)
-      .subscribe((data: any) => {
-        this.electionAuthority.walletAddress = data.address;
-        this.loadingService.hideLoading();
-      });
+      .subscribe(
+        (result: any) => {
+          this.electionAuthority.walletAddress = result.address;
+          this.loadingService.hideLoading();
+          this.createdWalletAddress.fire();
+        },
+        err => {
+          this.error = err.error.message;
+          this.loadingService.hideLoading();
+          this.errorSwal.fire();
+        }
+      );
   }
 }
