@@ -18,6 +18,7 @@ export class ShowElectionComponent implements OnInit, OnDestroy {
   subscription1$: Subscription;
   subscription2$: Subscription;
   subscription3$: Subscription;
+  subscription4$: Subscription;
   subscriptions: Subscription = new Subscription();
   election: Election;
   participantLink: string;
@@ -34,6 +35,9 @@ export class ShowElectionComponent implements OnInit, OnDestroy {
       route: '/election-authority/election'
     }
   ];
+
+  @ViewChild('ready', {static: false})
+  public readonly ready: SwalComponent;
 
   @ViewChild('startedElection', {static: false})
   public readonly startedElection: SwalComponent;
@@ -88,7 +92,12 @@ export class ShowElectionComponent implements OnInit, OnDestroy {
   }
 
   readyToDeploy() {
-
+    this.subscription4$ = this.electionService
+      .setReadyToDeploy(this.election.id)
+      .subscribe((data: any) => {
+        this.ready.fire();
+        console.log(data);
+      });
   }
 
   redirectBack() {

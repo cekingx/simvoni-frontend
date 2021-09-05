@@ -83,4 +83,12 @@ export class ElectionService {
         return response.data;
       }));
   }
+
+  setReadyToDeploy(electionId: number): Observable<any>
+  {
+    return this.http.post(`${baseUrl}/election-authority/election/${electionId}/ready`, {})
+      .pipe(map((response: any) => {
+        return response.data;
+      }));
+  }
 }

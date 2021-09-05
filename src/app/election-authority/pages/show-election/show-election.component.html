@@ -120,6 +120,15 @@
               </div>
             </div>
           </div>
+          <!-- begin::ready-swal -->
+          <swal
+            #ready
+            title="Sukses"
+            text="Tunggu Super Admin untuk deployment"
+            icon="success"
+            (confirm)="redirectBack()">
+          </swal>
+          <!-- end::ready-swal -->
           <!-- begin::started-election-swal -->
           <swal
             #startedElection
