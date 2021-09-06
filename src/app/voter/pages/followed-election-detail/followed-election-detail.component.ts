@@ -61,14 +61,12 @@ export class FollowedElectionDetailComponent implements OnInit, OnDestroy {
   }
 
   makeHtml(stringArray: string[]) {
-    let final;
     let child: string = '';
     stringArray.forEach((data: string, index: number) => {
       let html = `<p>${index+1}. ${data}</p>`;
       child = child + html;
     });
-    final = `<div>${child}</div>`;
-    return final;
+    return `<div>${child}</div>`;
   }
 
   voteCandidate(candidateId: number) {
