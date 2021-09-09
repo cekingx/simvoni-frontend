@@ -26,7 +26,7 @@ export class AddCandidateComponent implements OnInit, OnDestroy {
       route: '/election-authority'
     },
     {
-      name: 'All Election',
+      name: 'Semua Pemilihan',
       route: '/election-authority/election'
     }
   ];
@@ -59,7 +59,7 @@ export class AddCandidateComponent implements OnInit, OnDestroy {
           route: '/election-authority/election/' + this.election.id
         },
         {
-          name: 'Add Candidate',
+          name: 'Tambah Kandidat',
           route: '/election-authority/election/' + this.election.id + '/add-candidate'
         }
       );

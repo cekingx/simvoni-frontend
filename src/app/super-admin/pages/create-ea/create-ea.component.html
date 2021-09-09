@@ -19,7 +19,7 @@
       <!--begin::Content-->
       <div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
         <!--begin::Subheader-->
-        <sv-super-admin-sub-header [pageTitle]="'Create Election Authority'"></sv-super-admin-sub-header>
+        <sv-super-admin-sub-header [pageTitle]="'Buat Election Authority'"></sv-super-admin-sub-header>
         <!--end::Subheader-->
 
         <!-- begin::Entry -->
@@ -28,7 +28,7 @@
             <div class="card card-custom">
               <div class="card-header flex-wrap border-0 pt-6 pb-0">
                 <div class="card-title">
-                  <h3 class="card-label">Create Election Authority</h3>
+                  <h3 class="card-label">Buat Election Authority</h3>
                 </div>
               </div>
               <div class="card-body">
@@ -37,12 +37,12 @@
                     <form [formGroup]="createEaForm" (ngSubmit)="onSubmit()" class="form">
                       <!-- begin::input-name -->
                       <div class="form-group">
-                        <label>Name</label>
+                        <label>Nama</label>
                         <input
                           type="text"
                           class="form-control form-control-lg"
                           name="name"
-                          placeholder="Name"
+                          placeholder="Nama"
                           [ngClass]="{
                             'is-invalid': submitted && formControl.name.invalid,
                             'is-valid': submitted && formControl.name.valid
@@ -86,7 +86,7 @@
                           formControlName="password">
                       </div>
                       <!-- end::input-password -->
-                      <button class="btn btn-primary btn-lg" type="submit">Save</button>
+                      <button class="btn btn-primary btn-lg" type="submit">Simpan</button>
                       <!-- begin::error -->
                       <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
                       <!-- end::error -->

@@ -23,7 +23,7 @@ export class AvailableElectionComponent implements OnInit, OnDestroy {
       route: '/'
     },
     {
-      name: 'Available Election',
+      name: 'Pemilihan yang Tersedia',
       route: '/available-election'
     }
   ];

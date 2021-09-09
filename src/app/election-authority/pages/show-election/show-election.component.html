@@ -50,28 +50,28 @@
                     <div class="form">
                         <!-- begin::name -->
                       <div class="form-group">
-                        <label>Name</label>
+                        <label>Nama</label>
                         <input type="text" value="{{ election.name }}" class="form-control form-control-lg"
                           disabled>
                       </div>
                         <!-- end::name -->
                         <!-- begin::description -->
                       <div class="form-group">
-                        <label>Description</label>
+                        <label>Deskripsi</label>
                         <input type="text" value="{{ election.description }}" class="form-control form-control-lg"
                           disabled>
                       </div>
                         <!-- end::description -->
                         <!-- begin::start-date -->
                       <div class="form-group">
-                        <label>Start Date</label>
+                        <label>Mulai</label>
                         <input type="text" value="{{ formatDate(election.start) }}" class="form-control form-control-lg"
                           disabled>
                       </div>
                         <!-- end::start-date -->
                         <!-- begin::end-date -->
                       <div class="form-group">
-                        <label>End Date</label>
+                        <label>Selesai</label>
                         <input type="text" value="{{ formatDate(election.end) }}" class="form-control form-control-lg"
                           disabled>
                       </div>
@@ -83,14 +83,14 @@
                   <div class="card-footer">
                     <div class="container row">
                         <!-- begin::show-participant -->
-                        <a class="btn btn-secondary mr-2" routerLink="{{ participantLink }}">Show Participant</a>
+                        <a class="btn btn-secondary mr-2" routerLink="{{ participantLink }}">Tampilkan Peserta</a>
                         <!-- end::show-participant -->
                         <!-- begin::ready-to-deploy -->
                         <button *ngIf="election.status == electionStatus.draft"
                           [swal]="{ title: 'Ready to Deploy', text: election.name, showCancelButton: true, focusCancel: true }"
                           (confirm)="readyToDeploy()"
                           class="btn btn-primary mr-2">
-                          Ready
+                          Siap Deploy
                         </button>
                         <!-- end::ready-to-deploy -->
                         <!-- begin::start-election -->
@@ -98,7 +98,7 @@
                           [swal]="{ title: 'Start Election', text: election.name, showCancelButton: true, focusCancel: true }"
                           (confirm)="startElection()"
                           class="btn btn-primary mr-2">
-                          Start Election
+                          Mulai Pemilihan
                         </button>
                         <!-- end::start-election -->
                         <!-- begin::end-election -->
@@ -106,7 +106,7 @@
                           [swal]="{ title: 'End Election', text: election.name, showCancelButton: true, focusCancel: true }"
                           (confirm)="endElection()"
                           class="btn btn-danger mr-2">
-                          End Election
+                          Hentikan Pemilihan
                         </button>
                         <!-- end::end-election -->
                     </div>
@@ -133,7 +133,7 @@
           <swal
             #startedElection
             title="Sukses"
-            text="Election berhasil dimulai"
+            text="Pemilihan berhasil dimulai"
             icon="success"
             (confirm)="redirectBack()">
           </swal>
@@ -142,7 +142,7 @@
           <swal
             #endedElection
             title="Sukses"
-            text="Election berhasil dihentikan"
+            text="Pemilihan berhasil dihentikan"
             icon="success"
             (confirm)="redirectBack()">
           </swal>

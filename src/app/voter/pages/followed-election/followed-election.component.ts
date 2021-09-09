@@ -22,7 +22,7 @@ export class FollowedElectionComponent implements OnInit, OnDestroy {
       route: '/'
     },
     {
-      name: 'Followed Election',
+      name: 'Pemilihan yang Diikuti',
       route: '/followed-election'
     }
   ];

@@ -21,7 +21,7 @@ export class EndedElectionDetailComponent implements OnInit, OnDestroy {
       route: '/'
     },
     {
-      name: 'Ended Election',
+      name: 'Pemilihan yang Selesai',
       route: '/ended-election'
     }
   ]

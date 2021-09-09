@@ -31,7 +31,7 @@ export class ShowElectionComponent implements OnInit, OnDestroy {
       route: '/election-authority'
     },
     {
-      name: 'All Election',
+      name: 'Semua Pemilihan',
       route: '/election-authority/election'
     }
   ];

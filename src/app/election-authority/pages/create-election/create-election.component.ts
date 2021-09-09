@@ -19,11 +19,11 @@ export class CreateElectionComponent implements OnInit {
       route: '/election-authority'
     },
     {
-      name: 'All Election',
+      name: 'Semua Pemilihan',
       route: '/election-authority/election'
     },
     {
-      name: 'Create',
+      name: 'Buat',
       route: '/election-authority/election/create'
     }
   ];

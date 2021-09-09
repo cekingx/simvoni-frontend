@@ -16,7 +16,7 @@ export class ShowAllEaComponent implements OnInit {
       route: '/super-admin'
     },
     {
-      name: 'All EA',
+      name: 'Semua EA',
       route: '/super-admin/election-authority'
     }
   ];

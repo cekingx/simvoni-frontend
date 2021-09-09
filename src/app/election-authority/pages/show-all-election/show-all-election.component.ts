@@ -16,7 +16,7 @@ export class ShowAllElectionComponent implements OnInit {
       route: '/election-authority'
     },
     {
-      name: 'All Election',
+      name: 'Semua Pemilihan',
       route: '/election-authority/election'
     }
   ];

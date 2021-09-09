@@ -22,7 +22,7 @@ export class ShowParticipantComponent implements OnInit, OnDestroy {
       route: '/election-authority'
     },
     {
-      name: 'All Election',
+      name: 'Semua Pemilihan',
       route: '/election-authority/election'
     }
   ];
@@ -41,7 +41,7 @@ export class ShowParticipantComponent implements OnInit, OnDestroy {
         route: '/election-authority/election/' + this.participants.electionId
       });
       this.breadcrumbItems.push({
-        name: 'Participant',
+        name: 'Peserta',
         route: '/election-authority/election/' + this.participants.electionId + '/participant'
       });
       this.loadingService.hideLoading();

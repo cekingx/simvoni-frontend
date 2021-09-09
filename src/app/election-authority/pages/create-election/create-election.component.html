@@ -28,7 +28,7 @@
             <div class="card card-custom">
               <div class="card-header flex-wrap border-0 pt-6 pb-0">
                 <div class="card-title">
-                  <h3 class="card-label">Create Election</h3>
+                  <h3 class="card-label">Buat Pemilihan</h3>
                 </div>
               </div>
               <div class="card-body">
@@ -37,7 +37,7 @@
                     <form [formGroup]="createElectionForm" (ngSubmit)="onSubmit()" class="form">
                       <!-- begin::input-name -->
                       <div class="form-group">
-                        <label>Name</label>
+                        <label>Nama</label>
                         <input
                           type="text"
                           class="form-control form-control-lg"
@@ -50,12 +50,12 @@
                           formControlName="name">
                         <div
                           *ngIf="submitted && formControl.name.errors"
-                          class="invalid-feedback">Name is required</div>
+                          class="invalid-feedback">Nama harus diisi</div>
                       </div>
                       <!-- end::input-name -->
                       <!-- begin::input-description -->
                       <div class="form-group">
-                        <label>Description</label>
+                        <label>Deskripsi</label>
                         <input
                           type="text"
                           class="form-control form-control-lg"
@@ -68,12 +68,12 @@
                           formControlName="description">
                         <div
                           *ngIf="submitted && formControl.description.errors"
-                          class="invalid-feedback">Description is required</div>
+                          class="invalid-feedback">Deskripsi harus diisi</div>
                       </div>
                       <!-- end::input-description -->
                       <!-- begin::input-start -->
                       <div class="form-group">
-                        <label>Start</label>
+                        <label>Mulai</label>
                         <input
                           type="date"
                           class="form-control form-control-lg"
@@ -86,12 +86,12 @@
                           formControlName="start">
                         <div
                           *ngIf="submitted && formControl.start.errors"
-                          class="invalid-feedback">Start is required</div>
+                          class="invalid-feedback">Mulai harus diisi</div>
                       </div>
                       <!-- end::input-start -->
                       <!-- begin::input-end -->
                       <div class="form-group">
-                        <label>End</label>
+                        <label>Selesai</label>
                         <input
                           type="date"
                           class="form-control form-control-lg"
@@ -104,10 +104,10 @@
                           formControlName="end">
                         <div
                           *ngIf="submitted && formControl.end.errors"
-                          class="invalid-feedback">End is required</div>
+                          class="invalid-feedback">Selesai harus diisi</div>
                       </div>
                       <!-- end::input-end -->
-                      <button class="btn btn-primary btn-lg" type="submit">Save</button>
+                      <button class="btn btn-primary btn-lg" type="submit">Simpan</button>
                       <!-- begin::error -->
                       <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
                       <!-- end::error -->
@@ -116,7 +116,7 @@
                     <swal
                       #createdElection
                       title="Sukses"
-                      text="Election berhasil dibuat"
+                      text="Pemilihan berhasil dibuat"
                       icon="success"
                       (confirm)="redirectBack()">
                     </swal>

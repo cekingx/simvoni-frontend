@@ -24,7 +24,7 @@ export class ShowEaComponent implements OnInit, OnDestroy {
       route: '/super-admin'
     },
     {
-      name: 'All EA',
+      name: 'Semua EA',
       route: '/super-admin/election-authority'
     }
   ];

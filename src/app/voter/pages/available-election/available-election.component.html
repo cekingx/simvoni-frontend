@@ -28,8 +28,8 @@
             <div class="card card-custom">
               <div class="card-header flex-wrap border-0 pt-6 pb-0">
                 <div class="card-title">
-                  <h3 class="card-label">Available Election
-                    <span class="d-block text-muted pt-2 font-size-sm">Election yang tersedia</span>
+                  <h3 class="card-label">Pemilihan
+                    <span class="d-block text-muted pt-2 font-size-sm">Pemilihan yang tersedia</span>
                   </h3>
                 </div>
               </div>
@@ -47,7 +47,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Periode</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -62,8 +62,8 @@
                           <button
                             [swal]="{ title: 'Anda yakin mengikuti election ini?', showCancelButton: true, icon: 'question' }"
                             (confirm)="joinElection(election.id)"
-                            class="btn btn-primary"
-                          >Join</button>
+                            class="btn btn-primary">
+                          Ikuti</button>
                         </td>
                       </tr>
                     </tbody>
@@ -81,7 +81,7 @@
         <swal
           #joinedElection
           title="Sukses"
-          text="Election berhasil diikuti. Tunggu EA untuk melakukan approval"
+          text="Pemilihan berhasil diikuti. Tunggu EA untuk melakukan persetujuan"
           icon="success"
           (confirm)="redirectBack()"
         ></swal>
