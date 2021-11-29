@@ -1,0 +1,34 @@
+<div *ngFor="let candidate of election.candidates, let i = index" class="card card-custom mb-2">
+  <div class="card-body">
+    <div class="">
+      <!--begin::Section-->
+      <div class="d-flex align-items-center">
+        <!--begin::Foto-->
+        <!-- <div class="flex-shrink-0 mr-7">
+          <div class="symbol symbol-50 symbol-lg-120">
+            <img alt="Pic"
+              src="	https://preview.keenthemes.com/metronic/theme/html/demo1/dist/assets/media//users/300_10.jpg">
+          </div>
+        </div> -->
+        <!--end::Foto-->
+        <!--begin::Text-->
+        <div class="d-flex flex-column flex-grow-1">
+          <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">{{i+1}}. {{ candidate.name }}</a>
+          <span class="text-muted font-weight-bold">{{ candidate.visi }}</span>
+        </div>
+        <!--end::Text-->
+      </div>
+      <!--end::Section-->
+      <!--begin::Desc-->
+      <p class="text-dark-50 m-0 pt-5 font-weight-normal">Misi</p>
+      <p *ngFor="let misi of candidate.misi, let i = index" class="m-0">{{i+1}}. {{misi}}</p>
+      <p class="text-dark-50 m-0 pt-5 font-weight-normal">Pengalaman</p>
+      <p *ngFor="let pengalaman of candidate.pengalaman, let i = index" class="m-0">{{i+1}}. {{pengalaman}}</p>
+      <!--end::Desc-->
+    </div>
+  </div>
+</div>
+
+<div *ngIf="this.election.status == 'draft'" class="card card-custom">
+  <a [routerLink]="['/election-authority/election/' + election.id + '/add-candidate']" class="btn btn-lg btn-outline-secondary">Add Candidate</a>
+</div>

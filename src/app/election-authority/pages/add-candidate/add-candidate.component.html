@@ -1,0 +1,166 @@
+<!--begin::Main-->
+<!--begin::Header Mobile-->
+<sv-ea-header-mobile></sv-ea-header-mobile>
+<!--end::Header Mobile-->
+<div class="d-flex flex-column flex-root">
+  <!--begin::Page-->
+  <div class="d-flex flex-row flex-column-fluid page">
+
+    <!--begin::Aside-->
+    <sv-ea-aside></sv-ea-aside>
+    <!--end::Aside-->
+
+    <!--begin::Wrapper-->
+    <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+      <!--begin::Header-->
+      <sv-ea-header></sv-ea-header>
+      <!--end::Header-->
+
+      <!--begin::Content-->
+      <div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
+        <!--begin::Subheader-->
+        <sv-ea-sub-header [breadcrumbItems]="breadcrumbItems"></sv-ea-sub-header>
+        <!--end::Subheader-->
+
+        <!-- begin::Entry -->
+        <div class="d-flex flex-column">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-6">
+                <!--begin::Charts Widget 1-->
+                <div class="card card-custom mb-4">
+                  <!--begin::Header-->
+                  <div class="card-header h-auto border-0">
+                    <!--begin::Title-->
+                    <div class="card-title py-5">
+                      <h3 class="card-label">
+                        <span class="d-block text-dark font-weight-bolder">Tambah Kandidat</span>
+                      </h3>
+                    </div>
+                    <!--end::Title-->
+                    <!--begin::Toolbar-->
+                    <!-- <div class="card-toolbar">
+                      <span class="label label-lg label-primary label-pill label-inline mr-2">toolbar</span>
+                    </div> -->
+                    <!--end::Toolbar-->
+                  </div>
+                  <!--end::Header-->
+                  <!--begin::Body-->
+                  <div class="card-body" style="position: relative;">
+                    <form [formGroup]="addCandidateForm" (ngSubmit)="onSubmit()" class="form">
+                      <!-- begin::name -->
+                      <div class="form-group">
+                        <label>Nama</label>
+                        <input
+                          formControlName="name"
+                          [ngClass]="{
+                            'is-invalid': isSubmitted && formControl.name.invalid,
+                            'is-valid': isSubmitted && formControl.name.valid
+                          }"
+                          placeholder="Tambahkan nama"
+                          type="text"
+                          class="form-control form-control-lg">
+                        <div
+                          *ngIf="isSubmitted && formControl.name.errors"
+                          class="invalid-feedback">Name is required</div>
+                      </div>
+                      <!-- end::name -->
+                      <!-- begin::visi -->
+                      <div class="form-group">
+                        <label>Visi</label>
+                        <input
+                          formControlName="visi"
+                          [ngClass]="{
+                            'is-invalid': isSubmitted && formControl.visi.invalid,
+                            'is-valid': isSubmitted && formControl.visi.valid
+                          }"
+                          placeholder="Tambahkan visi"
+                          type="text"
+                          class="form-control form-control-lg">
+                        <div
+                          *ngIf="isSubmitted && formControl.name.errors"
+                          class="invalid-feedback">Visi is required</div>
+                      </div>
+                      <!-- end::visi -->
+                      <!-- begin::misi -->
+                      <label>Misi</label>
+                      <!-- begin::list-misi -->
+                      <div *ngFor="let data of misi, let i = index" class="form-group input-group">
+                        <input type="text" value="{{ i+1 }}. {{ data }}" class="form-control form-control-sm" disabled>
+                        <div class="input-group-append">
+                          <button (click)="removeMisi(i)" class="btn btn-outline-danger btn-sm" type="button" id="button-addon2"><i class="flaticon-delete icon-nm"></i></button>
+                        </div>
+                      </div>
+                      <!-- end::list-misi -->
+                      <div class="form-group input-group">
+                        <input
+                          formControlName="misi"
+                          placeholder="Tambahkan misi"
+                          type="text"
+                          class="form-control form-control-lg">
+                        <div class="input-group-append">
+                          <button (click)="addMisi()" class="btn btn-primary" type="button" id="button-addon2"><i class="flaticon2-add icon-lg"></i></button>
+                        </div>
+                      </div>
+                      <!-- end::misi -->
+                      <!-- begin::pengalaman -->
+                      <label>Pengalaman</label>
+                      <!-- begin::list-misi -->
+                      <div *ngFor="let data of pengalaman, let i = index" class="form-group input-group">
+                        <input type="text" value="{{ i+1 }}. {{ data }}" class="form-control form-control-sm" disabled>
+                        <div class="input-group-append">
+                          <button (click)="removePengalaman(i)" class="btn btn-outline-danger btn-sm" type="button" id="button-addon2"><i class="flaticon-delete icon-nm"></i></button>
+                        </div>
+                      </div>
+                      <!-- end::list-misi -->
+                      <div class="form-group input-group">
+                        <input
+                          formControlName="pengalaman"
+                          placeholder="Tambahkan pengalaman"
+                          type="text"
+                          class="form-control form-control-lg">
+                        <div class="input-group-append">
+                          <button (click)="addPengalaman()" class="btn btn-primary" type="button" id="button-addon2"><i class="flaticon2-add icon-lg"></i></button>
+                        </div>
+                      </div>
+                      <!-- end::pengalaman -->
+                      <button class="btn btn-primary btn-lg" type="submit">Simpan</button>
+                    </form>
+                  </div>
+                  <!--end::Body-->
+                </div>
+                <!--end::Charts Widget 1-->
+              </div>
+            </div>
+          </div>
+          <!-- begin::added-candidate -->
+          <swal
+            #addedCandidate
+            title="Sukses"
+            text="Kadidat berhasil ditambahkan"
+            icon="success"
+            (confirm)="redirectBack()">
+          </swal>
+          <!-- end::added-candidate -->
+          <!-- begin::error-swal -->
+          <swal
+            #errorSwal
+            title="Error"
+            text="{{ error }}"
+            icon="error">
+          </swal>
+          <!-- end::error-swal -->
+        </div>
+        <!-- end::Entry -->
+      </div>
+      <!--end::Content-->
+
+      <!--begin::Footer-->
+      <sv-footer></sv-footer>
+      <!--end::Footer-->
+    </div>
+    <!--end::Wrapper-->
+  </div>
+  <!--end::Page-->
+</div>
+<!--end::Main-->

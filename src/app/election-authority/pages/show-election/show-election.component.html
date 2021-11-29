@@ -1,0 +1,163 @@
+<!--begin::Main-->
+<!--begin::Header Mobile-->
+<sv-ea-header-mobile></sv-ea-header-mobile>
+<!--end::Header Mobile-->
+<div class="d-flex flex-column flex-root">
+  <!--begin::Page-->
+  <div class="d-flex flex-row flex-column-fluid page">
+
+    <!--begin::Aside-->
+    <sv-ea-aside></sv-ea-aside>
+    <!--end::Aside-->
+
+    <!--begin::Wrapper-->
+    <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+      <!--begin::Header-->
+      <sv-ea-header></sv-ea-header>
+      <!--end::Header-->
+
+      <!--begin::Content-->
+      <div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
+        <!--begin::Subheader-->
+        <sv-ea-sub-header [breadcrumbItems]="breadcrumbItems"></sv-ea-sub-header>
+        <!--end::Subheader-->
+
+        <!-- begin::Entry -->
+        <div class="d-flex flex-column">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-6">
+                <!--begin::Charts Widget 1-->
+                <div class="card card-custom mb-4">
+                  <!--begin::Header-->
+                  <div class="card-header h-auto border-0">
+                    <!--begin::Title-->
+                    <div class="card-title py-5">
+                      <h3 class="card-label">
+                        <span class="d-block text-dark font-weight-bolder">{{ election.name }}</span>
+                      </h3>
+                    </div>
+                    <!--end::Title-->
+                    <!--begin::Toolbar-->
+                    <div class="card-toolbar">
+                      <span class="label label-lg label-primary label-pill label-inline mr-2">{{ election.status }}</span>
+                    </div>
+                    <!--end::Toolbar-->
+                  </div>
+                  <!--end::Header-->
+                  <!--begin::Body-->
+                  <div class="card-body" style="position: relative;">
+                    <div class="form">
+                        <!-- begin::name -->
+                      <div class="form-group">
+                        <label>Nama</label>
+                        <input type="text" value="{{ election.name }}" class="form-control form-control-lg"
+                          disabled>
+                      </div>
+                        <!-- end::name -->
+                        <!-- begin::description -->
+                      <div class="form-group">
+                        <label>Deskripsi</label>
+                        <input type="text" value="{{ election.description }}" class="form-control form-control-lg"
+                          disabled>
+                      </div>
+                        <!-- end::description -->
+                        <!-- begin::start-date -->
+                      <div class="form-group">
+                        <label>Mulai</label>
+                        <input type="text" value="{{ formatDate(election.start) }}" class="form-control form-control-lg"
+                          disabled>
+                      </div>
+                        <!-- end::start-date -->
+                        <!-- begin::end-date -->
+                      <div class="form-group">
+                        <label>Selesai</label>
+                        <input type="text" value="{{ formatDate(election.end) }}" class="form-control form-control-lg"
+                          disabled>
+                      </div>
+                        <!-- end::end-date -->
+                    </div>
+                  </div>
+                  <!--end::Body-->
+                  <!-- begin::Footer -->
+                  <div class="card-footer">
+                    <div class="container row">
+                        <!-- begin::show-participant -->
+                        <a class="btn btn-secondary mr-2" routerLink="{{ participantLink }}">Tampilkan Peserta</a>
+                        <!-- end::show-participant -->
+                        <!-- begin::ready-to-deploy -->
+                        <button *ngIf="election.status == electionStatus.draft"
+                          [swal]="{ title: 'Ready to Deploy', text: election.name, showCancelButton: true, focusCancel: true }"
+                          (confirm)="readyToDeploy()"
+                          class="btn btn-primary mr-2">
+                          Siap Deploy
+                        </button>
+                        <!-- end::ready-to-deploy -->
+                        <!-- begin::start-election -->
+                        <button *ngIf="election.status == electionStatus.deployed"
+                          [swal]="{ title: 'Start Election', text: election.name, showCancelButton: true, focusCancel: true }"
+                          (confirm)="startElection()"
+                          class="btn btn-primary mr-2">
+                          Mulai Pemilihan
+                        </button>
+                        <!-- end::start-election -->
+                        <!-- begin::end-election -->
+                        <button *ngIf="election.status == electionStatus.started"
+                          [swal]="{ title: 'End Election', text: election.name, showCancelButton: true, focusCancel: true }"
+                          (confirm)="endElection()"
+                          class="btn btn-danger mr-2">
+                          Hentikan Pemilihan
+                        </button>
+                        <!-- end::end-election -->
+                    </div>
+                  </div>
+                  <!-- end::Footer -->
+                </div>
+                <!--end::Charts Widget 1-->
+                <!-- begin::candidate -->
+                <sv-ea-candidate-list [election]="election"></sv-ea-candidate-list>
+                <!-- end::candidate -->
+              </div>
+            </div>
+          </div>
+          <!-- begin::ready-swal -->
+          <swal
+            #ready
+            title="Sukses"
+            text="Tunggu Super Admin untuk deployment"
+            icon="success"
+            (confirm)="redirectBack()">
+          </swal>
+          <!-- end::ready-swal -->
+          <!-- begin::started-election-swal -->
+          <swal
+            #startedElection
+            title="Sukses"
+            text="Pemilihan berhasil dimulai"
+            icon="success"
+            (confirm)="redirectBack()">
+          </swal>
+          <!-- end::started-election-swal -->
+          <!-- begin::ended-election-swal -->
+          <swal
+            #endedElection
+            title="Sukses"
+            text="Pemilihan berhasil dihentikan"
+            icon="success"
+            (confirm)="redirectBack()">
+          </swal>
+          <!-- end::ended-election-swal -->
+        </div>
+        <!-- end::Entry -->
+      </div>
+      <!--end::Content-->
+
+      <!--begin::Footer-->
+      <sv-footer></sv-footer>
+      <!--end::Footer-->
+    </div>
+    <!--end::Wrapper-->
+  </div>
+  <!--end::Page-->
+</div>
+<!--end::Main-->

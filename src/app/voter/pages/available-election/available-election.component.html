@@ -1,0 +1,100 @@
+<!--begin::Main-->
+<!--begin::Header Mobile-->
+<sv-voter-header-mobile></sv-voter-header-mobile>
+<!--end::Header Mobile-->
+<div class="d-flex flex-column flex-root">
+  <!--begin::Page-->
+  <div class="d-flex flex-row flex-column-fluid page">
+
+    <!--begin::Aside-->
+    <sv-voter-aside></sv-voter-aside>
+    <!--end::Aside-->
+
+    <!--begin::Wrapper-->
+    <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+      <!--begin::Header-->
+      <sv-voter-header></sv-voter-header>
+      <!--end::Header-->
+
+      <!--begin::Content-->
+      <div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
+        <!--begin::Subheader-->
+        <sv-voter-sub-header [breadcrumbItems]="breadcrumbItems"></sv-voter-sub-header>
+        <!--end::Subheader-->
+
+        <!-- begin::Entry -->
+        <div class="d-flex flex-column">
+          <div class="container">
+            <div class="card card-custom">
+              <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                <div class="card-title">
+                  <h3 class="card-label">Pemilihan
+                    <span class="d-block text-muted pt-2 font-size-sm">Pemilihan yang tersedia</span>
+                  </h3>
+                </div>
+              </div>
+              <div class="card-body">
+                <!--begin::Search Form-->
+                <!-- Tambahkan search form disini -->
+                <!--end::Search Form-->
+
+                <!--begin: Datatable-->
+                <div class="datatable datatable-default datatable-bordered datatable-loaded">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Periode</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let election of availableElection, let i = index">
+                        <td>{{ i+1 }}</td>
+                        <td>{{ election.name }}</td>
+                        <td>{{ this.formattedDate(election.start) }} - {{ this.formattedDate(election.end) }}</td>
+                        <td>
+                          <sv-election-status-label [status]="election.status"></sv-election-status-label>
+                        </td>
+                        <td>
+                          <button
+                            [swal]="{ title: 'Anda yakin mengikuti election ini?', showCancelButton: true, icon: 'question' }"
+                            (confirm)="joinElection(election.id)"
+                            class="btn btn-primary">
+                          Ikuti</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- begin::pager -->
+                  <!-- end::pager -->
+                </div>
+                <!--end: Datatable-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end::Entry -->
+        <!-- begin::success-swal -->
+        <swal
+          #joinedElection
+          title="Sukses"
+          text="Pemilihan berhasil diikuti. Tunggu EA untuk melakukan persetujuan"
+          icon="success"
+          (confirm)="redirectBack()"
+        ></swal>
+        <!-- end::success-swal -->
+      </div>
+      <!--end::Content-->
+
+      <!--begin::Footer-->
+      <sv-footer></sv-footer>
+      <!--end::Footer-->
+    </div>
+    <!--end::Wrapper-->
+  </div>
+  <!--end::Page-->
+</div>
+<!--end::Main-->

@@ -1,0 +1,129 @@
+<!--begin::Main-->
+<!--begin::Header Mobile-->
+<sv-super-admin-header-mobile></sv-super-admin-header-mobile>
+<!--end::Header Mobile-->
+<div class="d-flex flex-column flex-root">
+  <!--begin::Page-->
+  <div class="d-flex flex-row flex-column-fluid page">
+
+    <!--begin::Aside-->
+    <sv-super-admin-aside></sv-super-admin-aside>
+    <!--end::Aside-->
+
+    <!--begin::Wrapper-->
+    <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+      <!--begin::Header-->
+      <sv-super-admin-header></sv-super-admin-header>
+      <!--end::Header-->
+
+      <!--begin::Content-->
+      <div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
+        <!--begin::Subheader-->
+        <sv-super-admin-sub-header [pageTitle]="'Buat Election Authority'"></sv-super-admin-sub-header>
+        <!--end::Subheader-->
+
+        <!-- begin::Entry -->
+        <div class="d-flex flex-column">
+          <div class="container">
+            <div class="card card-custom">
+              <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                <div class="card-title">
+                  <h3 class="card-label">Buat Election Authority</h3>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="row justify-content-center">
+                  <div class="col-lg-7 col-md-12">
+                    <form [formGroup]="createEaForm" (ngSubmit)="onSubmit()" class="form">
+                      <!-- begin::input-name -->
+                      <div class="form-group">
+                        <label>Nama</label>
+                        <input
+                          type="text"
+                          class="form-control form-control-lg"
+                          name="name"
+                          placeholder="Nama"
+                          [ngClass]="{
+                            'is-invalid': submitted && formControl.name.invalid,
+                            'is-valid': submitted && formControl.name.valid
+                          }"
+                          formControlName="name">
+                        <div
+                          *ngIf="submitted && formControl.name.errors"
+                          class="invalid-feedback">Name is required</div>
+                      </div>
+                      <!-- end::input-name -->
+                      <!-- begin::input-username -->
+                      <div class="form-group">
+                        <label>Username</label>
+                        <input
+                          type="text"
+                          class="form-control form-control-lg"
+                          name="username"
+                          placeholder="Username"
+                          [ngClass]="{
+                            'is-invalid': submitted && formControl.username.invalid,
+                            'is-valid': submitted && formControl.username.valid
+                          }"
+                          formControlName="username">
+                        <div
+                          *ngIf="submitted && formControl.username.errors"
+                          class="invalid-feedback">Username is required</div>
+                      </div>
+                      <!-- end::input-username -->
+                      <!-- begin::input-password -->
+                      <div class="form-group">
+                        <label>Password</label>
+                        <input
+                          type="password"
+                          class="form-control form-control-lg"
+                          name="password"
+                          placeholder="Password"
+                          [ngClass]="{
+                            'is-invalid': submitted && formControl.password.invalid,
+                            'is-valid': submitted && formControl.password.valid
+                          }"
+                          formControlName="password">
+                      </div>
+                      <!-- end::input-password -->
+                      <button class="btn btn-primary btn-lg" type="submit">Simpan</button>
+                      <!-- begin::error -->
+                      <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+                      <!-- end::error -->
+                    </form>
+                    <!-- begin::success-swal -->
+                    <swal
+                      #createdEa
+                      title="Sukses"
+                      text="Election Authority berhasil dibuat"
+                      icon="success"
+                      (confirm)="redirectBack()">
+                    </swal>
+                    <!-- end::success-swal -->
+                    <!-- begin::error-swal -->
+                    <swal
+                      #errorSwal
+                      title="Error"
+                      text="{{ error }}"
+                      icon="error">
+                    </swal>
+                    <!-- end::error-swal -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end::Entry -->
+      </div>
+      <!--end::Content-->
+
+      <!--begin::Footer-->
+      <sv-footer></sv-footer>
+      <!--end::Footer-->
+    </div>
+    <!--end::Wrapper-->
+  </div>
+  <!--end::Page-->
+</div>
+<!--end::Main-->

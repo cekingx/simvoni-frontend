@@ -1,0 +1,140 @@
+<!--begin::Main-->
+<!--begin::Header Mobile-->
+<sv-voter-header-mobile></sv-voter-header-mobile>
+<!--end::Header Mobile-->
+<div class="d-flex flex-column flex-root">
+  <!--begin::Page-->
+  <div class="d-flex flex-row flex-column-fluid page">
+
+    <!--begin::Aside-->
+    <sv-voter-aside></sv-voter-aside>
+    <!--end::Aside-->
+
+    <!--begin::Wrapper-->
+    <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+      <!--begin::Header-->
+      <sv-voter-header></sv-voter-header>
+      <!--end::Header-->
+
+      <!--begin::Content-->
+      <div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
+        <!--begin::Subheader-->
+        <sv-voter-sub-header [breadcrumbItems]="breadcrumbItems"></sv-voter-sub-header>
+        <!--end::Subheader-->
+
+        <!-- begin::Entry -->
+        <div class="container">
+          <!--begin::Education-->
+          <div class="d-flex flex-column">
+            <!--begin::Info-->
+            <div class="flex-row-fluid">
+              <div class="row justify-content-center">
+                <div class="col-12">
+                  <!--begin::Card-->
+                  <div class="card card-custom gutter-b card-stretch">
+                    <!--begin::Body-->
+                    <div class="card-body text-center pt-4">
+                      <!--begin::Name-->
+                      <div class="my-2">
+                        <p class="text-dark font-weight-bold font-size-h3">{{ election.name }}</p>
+                      </div>
+                      <!--end::Name-->
+                      <!--begin::Label-->
+                      <sv-election-status-label [status]="election.status"></sv-election-status-label>
+                      <!--end::Label-->
+                      <!-- begin::Date -->
+                      <p class="font-weight-bold">{{ formattedDate(election.start) }} - {{ formattedDate(election.end) }}</p>
+                      <!-- end::Date -->
+                      <!-- begin::Desc -->
+                      <p>{{ election.description }}</p>
+                      <!-- end::Desc -->
+                    </div>
+                    <!--end::Body-->
+                  </div>
+                  <!--end::Card-->
+                </div>
+              </div>
+            </div>
+            <!--end::Info-->
+            <!--begin::Content-->
+            <div class="flex-row-fluid">
+              <!--begin::Row-->
+              <div class="row">
+                <!--begin::Col-->
+                <div *ngFor="let candidate of election.candidates, let i = index" class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                  <!--begin::Card-->
+                  <div class="card card-custom gutter-b card-stretch">
+                    <div class="card-header justify-content-center">
+                      <div class="card-title">{{ i+1 }}</div>
+                    </div>
+                    <!--begin::Body-->
+                    <div class="card-body text-center pt-4">
+                      <!--begin::User-->
+                      <div class="mt-7">
+                        <div class="symbol symbol-lg-150">
+                          <img src="https://via.placeholder.com/150" alt="image">
+                        </div>
+                      </div>
+                      <!--end::User-->
+                      <!--begin::Name-->
+                      <div class="my-2">
+                        <p class="text-dark font-weight-bold font-size-h4">{{ candidate.name }}</p>
+                      </div>
+                      <!--end::Name-->
+                      <!-- begin::Visi -->
+                      <div class="my-2">
+                        <p>{{ candidate.visi }}</p>
+                      </div>
+                      <!-- end::Visi -->
+                      <div class="flex-column">
+                        <div class="d-flex flex-row">
+                          <button
+                            class="my-2 flex-grow-1 mr-2 btn btn-secondary"
+                            [swal]="{
+                              title: 'Misi',
+                              html: makeHtml(candidate.misi)
+                            }"
+                          >Misi</button>
+                          <button
+                            class="my-2 flex-grow-1 btn btn-secondary"
+                            [swal]="{
+                              title: 'Pengalaman',
+                              html: makeHtml(candidate.pengalaman)
+                            }"
+                          >Pengalaman</button>
+                        </div>
+                        <div *ngIf="election.status == 'started' && election.participation_status == 'accepted'" class="flex-row">
+                          <button
+                            class="col-12 my-2 btn btn-lg btn-primary"
+                            [swal]="{title: 'Vote', text: candidate.name, showCancelButton: true, focusCancel: true}"
+                            (confirm)="voteCandidate(candidate.id)">
+                            Pilih
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <!--end::Body-->
+                  </div>
+                  <!--end::Card-->
+                </div>
+                <!--end::Col-->
+              </div>
+              <!--end::Row-->
+            </div>
+            <!--end::Content-->
+          </div>
+          <!--end::Education-->
+        </div>
+        <!-- end::Entry -->
+      </div>
+      <!--end::Content-->
+
+      <!--begin::Footer-->
+      <sv-footer></sv-footer>
+      <!--end::Footer-->
+    </div>
+    <!--end::Wrapper-->
+  </div>
+  <!--end::Page-->
+</div>
+<!--end::Main-->
