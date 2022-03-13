@@ -1,6 +1,7 @@
 import { formatDate, NgLocaleLocalization } from '@angular/common';
 import { Component, Inject, LOCALE_ID, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { KtInitService } from '@app/services/kt-init.service';
 import { LoadingService } from '@app/services/loading.service';
 import { ElectionService } from '@app/voter/services/election.service';
 import { BreadcrumbItem } from '@app/_models/breadcrumb-item';
@@ -8,6 +9,11 @@ import { Election } from '@app/_models/election';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { Subscription } from 'rxjs';
 
+declare let KTApp: any;
+declare let KTAppSettings: any;
+declare let KTUtil: any;
+declare let KTLayoutAside: any;
+declare let $: any;
 @Component({
   selector: 'app-available-election',
   templateUrl: './available-election.component.html',
@@ -36,9 +42,11 @@ export class AvailableElectionComponent implements OnInit, OnDestroy {
     private loadingService: LoadingService,
     private electionService: ElectionService,
     @Inject(LOCALE_ID) private locale: string,
+    private ktInitService: KtInitService
   ) { }
 
   ngOnInit() {
+    this.ktInitService.initialize();
     this.subscription1$ = this.route.data.subscribe((data: any) => {
       this.availableElection = data.availableElection;
       this.loadingService.hideLoading();

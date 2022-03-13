@@ -7,6 +7,7 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 })
 export class AsideComponent implements OnInit {
   @HostBinding('class') class = 'aside aside-left  aside-fixed  d-flex flex-column flex-row-auto';
+  @HostBinding('id') id = 'kt_aside';
 
   constructor() { }
 

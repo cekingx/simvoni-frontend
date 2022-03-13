@@ -17,6 +17,7 @@ import { FollowedElectionDetailComponent } from './pages/followed-election-detai
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { EndedElectionComponent } from './pages/ended-election/ended-election.component';
 import { EndedElectionDetailComponent } from './pages/ended-election-detail/ended-election-detail.component';
+import { KtInitService } from '@app/services/kt-init.service';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { EndedElectionDetailComponent } from './pages/ended-election-detail/ende
     SweetAlert2Module
   ],
   providers: [
-    ElectionService
+    ElectionService,
+    KtInitService
   ]
 })
 export class VoterModule { }

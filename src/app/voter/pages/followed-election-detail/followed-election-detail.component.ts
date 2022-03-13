@@ -1,6 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Component, Inject, LOCALE_ID, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { KtInitService } from '@app/services/kt-init.service';
 import { LoadingService } from '@app/services/loading.service';
 import { ElectionService } from '@app/voter/services/election.service';
 import { BreadcrumbItem } from '@app/_models/breadcrumb-item';
@@ -36,9 +37,11 @@ export class FollowedElectionDetailComponent implements OnInit, OnDestroy {
     private loadingService: LoadingService,
     private electionService: ElectionService,
     @Inject(LOCALE_ID) private locale: string,
+    private ktInitService: KtInitService
   ) { }
 
   ngOnInit() {
+    this.ktInitService.initialize();
     this.subscription1$ = this.route.data.subscribe((data: any) => {
       this.election = data.electionDetail;
       this.breadcrumbItems.push({
