@@ -14,12 +14,14 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { JwtInterceptor } from './_helper/jwt.interceptor';
 import { ErrorInterceptor } from './_helper/error.interceptor';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     LoadingComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
