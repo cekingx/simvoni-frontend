@@ -13,6 +13,8 @@ import { EndedElectionComponent } from './pages/ended-election/ended-election.co
 import { EndedElectionResolver } from './pages/ended-election/resolver/ended-election.resolver';
 import { EndedElectionDetailComponent } from './pages/ended-election-detail/ended-election-detail.component';
 import { EndedElectionDetailResolver } from './pages/ended-election-detail/resolver/ended-election-detail.resolver';
+import { UpgradeRoleComponent } from './pages/upgrade-role/upgrade-role.component';
+import { UpgradeRoleResolver } from './pages/upgrade-role/resolver/upgrade-role.resolver';
 
 const routes: Routes = [
   {
@@ -58,6 +60,14 @@ const routes: Routes = [
     canActivate: [AuthGuard, VoterGuard],
     resolve: {
       electionDetail: EndedElectionDetailResolver
+    }
+  },
+  {
+    path: 'upgrade-role',
+    component: UpgradeRoleComponent,
+    canActivate: [AuthGuard, VoterGuard],
+    resolve: {
+      upgradeRoleStatus: UpgradeRoleResolver
     }
   }
 ];
