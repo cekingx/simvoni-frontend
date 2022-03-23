@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { KtInitService } from '@app/services/kt-init.service';
 import { LoadingService } from '@app/services/loading.service';
 import { BreadcrumbItem } from '@app/_models/breadcrumb-item';
 import { UpgradeRole } from '@app/_models/upgrade-role';
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -21,6 +22,9 @@ export class UpgradeRoleComponent implements OnInit, OnDestroy {
       route: '/'
     }
   ];
+
+  @ViewChild('success', {static: false})
+  public readonly success: SwalComponent;
 
   constructor(
     private ktInitService: KtInitService,
@@ -44,6 +48,17 @@ export class UpgradeRoleComponent implements OnInit, OnDestroy {
 
   pushSubscription() {
     this.subscriptions.add(this.subscription1$);
+  }
+
+  upgradeRole() {
+    console.log('Upgrading role...');
+    this.success.fire();
+  }
+
+  redirectBack() {
+    console.log('Redirecting back...');
+    this.loadingService.showLoading();
+    location.reload();
   }
 
 }

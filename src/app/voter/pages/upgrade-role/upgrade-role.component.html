@@ -32,7 +32,13 @@
                     <div class="card-body text-center pt-4">
                       <h3>Upgrade Role</h3>
                       <p>Upgrade Role Status: <sv-upgrade-role-label [code]="upgradeRoleStatus.code" [text]="upgradeRoleStatus.value"></sv-upgrade-role-label></p>
-                      <button class="btn btn-primary">Request Upgrade</button>
+                      <button
+                        *ngIf="upgradeRoleStatus.code == 0"
+                        [swal]="{ title: 'Upgrade Role', text: 'Request Upgrade Role?', showCancelButton: true, focusCancel: true }"
+                        (confirm)="upgradeRole()"
+                        class="btn btn-primary">
+                        Request Upgrade
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -41,6 +47,13 @@
           </div>
         </div>
         <!-- end::Entry -->
+        <swal
+          #success
+          title="Sukses"
+          text="Sedang direview oleh Super Admin"
+          icon="success"
+          (confirm)="redirectBack()">
+        </swal>
       </div>
       <!--end::Content-->
 
