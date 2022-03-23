@@ -30,7 +30,9 @@
                 <div class="col-lg-8 col-md-12">
                   <div class="card card-custom">
                     <div class="card-body text-center pt-4">
-                      <p>Upgrade Role Status: {{ upgradeRoleStatus }}</p>
+                      <h3>Upgrade Role</h3>
+                      <p>Upgrade Role Status: <sv-upgrade-role-label [code]="upgradeRoleStatus.code" [text]="upgradeRoleStatus.value"></sv-upgrade-role-label></p>
+                      <button class="btn btn-primary">Request Upgrade</button>
                     </div>
                   </div>
                 </div>
