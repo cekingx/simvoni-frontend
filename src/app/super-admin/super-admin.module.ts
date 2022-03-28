@@ -18,6 +18,7 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { ElectionAuthorityService } from './services/election-authority.service';
 import { ShowRtdElectionComponent } from './pages/show-rtd-election/show-rtd-election.component';
 import { ElectionService } from './services/election.service';
+import { UpgradeRoleComponent } from './pages/upgrade-role/upgrade-role.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ElectionService } from './services/election.service';
     ShowEaComponent,
     ShowAllEaComponent,
     BreadcrumbsComponent,
-    ShowRtdElectionComponent
+    ShowRtdElectionComponent,
+    UpgradeRoleComponent
   ],
   imports: [
     CommonModule,
