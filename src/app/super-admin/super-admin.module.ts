@@ -19,6 +19,7 @@ import { ElectionAuthorityService } from './services/election-authority.service'
 import { ShowRtdElectionComponent } from './pages/show-rtd-election/show-rtd-election.component';
 import { ElectionService } from './services/election.service';
 import { UpgradeRoleComponent } from './pages/upgrade-role/upgrade-role.component';
+import { UserService } from '@app/voter/services/user.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { UpgradeRoleComponent } from './pages/upgrade-role/upgrade-role.componen
   ],
   providers: [
     ElectionAuthorityService,
-    ElectionService
+    ElectionService,
+    UserService
   ]
 })
 export class SuperAdminModule { }

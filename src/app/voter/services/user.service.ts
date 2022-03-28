@@ -16,4 +16,12 @@ export class UserService {
         return response;
       }))
   }
+
+  getUpgradeRoleList(): Observable<any>
+  {
+    return this.http.get<any>(`${baseUrl}/super-admin/upgrade-role`)
+      .pipe(map((response: any) => {
+        return response.data;
+      }))
+  }
 }

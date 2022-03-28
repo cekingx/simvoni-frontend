@@ -9,6 +9,7 @@ import { ShowAllEaComponent } from './pages/show-all-ea/show-all-ea.component';
 import { ElectionAuthorityResolver } from './pages/show-ea/resolver/election-authority.resolver';
 import { ShowRtdElectionComponent } from './pages/show-rtd-election/show-rtd-election.component';
 import { UpgradeRoleComponent } from './pages/upgrade-role/upgrade-role.component';
+import { UpgradeRoleResolver } from './pages/upgrade-role/resolver/upgrade-role.resolver';
 
 const routes: Routes = [
   {
@@ -42,7 +43,10 @@ const routes: Routes = [
   {
     path: 'super-admin/upgrade-role',
     component: UpgradeRoleComponent,
-    canActivate: [AuthGuard, SuperAdminGuard]
+    canActivate: [AuthGuard, SuperAdminGuard],
+    resolve: {
+      upgradeRoleList: UpgradeRoleResolver
+    }
   }
 ];
 
