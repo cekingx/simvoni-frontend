@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingService } from '@app/services/loading.service';
+import { UserService } from '@app/super-admin/services/user.service';
 import { BreadcrumbItem } from '@app/_models/breadcrumb-item';
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -22,11 +24,15 @@ export class UpgradeRoleComponent implements OnInit {
       name: 'Upgrade Role',
       route: '/super-admin/upgrade-role'
     }
-  ]
+  ];
+
+  @ViewChild('upgradedRole', {static: false})
+  public readonly upgradedRole: SwalComponent
 
   constructor(
     private route: ActivatedRoute,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -34,7 +40,29 @@ export class UpgradeRoleComponent implements OnInit {
       this.upgradeRoleList = data.upgradeRoleList;
       this.loadingService.hideLoading();
     });
-    console.log(this.upgradeRoleList);
+  }
+
+  acceptUpgradeRole(id: number)
+  {
+    this.loadingService.showLoading();
+    this.userService
+      .upgradeRole(id)
+      .subscribe(
+        result => {
+          this.loadingService.hideLoading();
+          this.upgradedRole.fire();
+        },
+        err => {
+          this.loadingService.hideLoading();
+          console.log(err);
+        }
+      )
+  }
+
+  redirectBack()
+  {
+    this.loadingService.showLoading();
+    location.reload();
   }
 
 }
