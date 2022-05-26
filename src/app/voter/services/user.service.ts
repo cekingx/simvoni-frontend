@@ -16,4 +16,12 @@ export class UserService {
         return response;
       }))
   }
+
+  upgradeRole(): Observable<any>
+  {
+    return this.http.post<any>(`${baseUrl}/voter/upgrade-role`, {})
+      .pipe(map((response: any) => {
+        return response;
+      }))
+  }
 }
