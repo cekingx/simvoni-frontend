@@ -73,6 +73,66 @@
                   <!--end::Card-->
                 </div>
                 <!-- end::election-winner -->
+                <!-- begin::election-analytics -->
+                <div class="col-12">
+                  <div class="row">
+                    <!-- begin::votes -->
+                    <div class="col-4">
+                      <!--begin::Card-->
+                      <div class="card card-custom gutter-b card-stretch">
+                        <!--begin::Body-->
+                        <div class="card-body text-center pt-4">
+                          <div class="my-2">Jumlah Suara</div>
+                          <!--begin::Name-->
+                          <div class="my-2">
+                            <p class="text-dark font-weight-bold font-size-h2">{{ election.votes }}</p>
+                          </div>
+                          <!--end::Name-->
+                        </div>
+                        <!--end::Body-->
+                      </div>
+                      <!--end::Card-->
+                    </div>
+                    <!-- end::votes -->
+                    <!-- begin::abstain -->
+                    <div class="col-4">
+                      <!--begin::Card-->
+                      <div class="card card-custom gutter-b card-stretch">
+                        <!--begin::Body-->
+                        <div class="card-body text-center pt-4">
+                          <div class="my-2">Tidak Memilih</div>
+                          <!--begin::Name-->
+                          <div class="my-2">
+                            <p class="text-dark font-weight-bold font-size-h2">{{ election.abstains }}</p>
+                          </div>
+                          <!--end::Name-->
+                        </div>
+                        <!--end::Body-->
+                      </div>
+                      <!--end::Card-->
+                    </div>
+                    <!-- end::abstain -->
+                    <!-- begin::total -->
+                    <div class="col-4">
+                      <!--begin::Card-->
+                      <div class="card card-custom gutter-b card-stretch">
+                        <!--begin::Body-->
+                        <div class="card-body text-center pt-4">
+                          <div class="my-2">Total Suara</div>
+                          <!--begin::Name-->
+                          <div class="my-2">
+                            <p class="text-dark font-weight-bold font-size-h2">{{ election.total }}</p>
+                          </div>
+                          <!--end::Name-->
+                        </div>
+                        <!--end::Body-->
+                      </div>
+                      <!--end::Card-->
+                    </div>
+                    <!-- end::total -->
+                  </div>
+                </div>
+                <!-- end::election-analytics -->
               </div>
             </div>
             <!--end::Info-->
