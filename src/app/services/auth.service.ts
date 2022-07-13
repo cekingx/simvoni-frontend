@@ -36,6 +36,16 @@ export class AuthService {
     }))
   }
 
+  register(name: string, username: string, password: string): Observable<any>
+  {
+    const reqHeader = new HttpHeaders({ 'Content-Type': 'application/json', 'No-Auth': 'True' });
+    return this.http.post(`${baseUrl}/register`, { name, username, password }, { headers: reqHeader })
+    .pipe(map(user => {
+      this.response = user;
+      return this.response;
+    }))
+  }
+
   logout()
   {
     localStorage.removeItem('currentUser');

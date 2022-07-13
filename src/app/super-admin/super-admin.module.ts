@@ -18,6 +18,8 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { ElectionAuthorityService } from './services/election-authority.service';
 import { ShowRtdElectionComponent } from './pages/show-rtd-election/show-rtd-election.component';
 import { ElectionService } from './services/election.service';
+import { UpgradeRoleComponent } from './pages/upgrade-role/upgrade-role.component';
+import { UserService } from '@app/voter/services/user.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { ElectionService } from './services/election.service';
     ShowEaComponent,
     ShowAllEaComponent,
     BreadcrumbsComponent,
-    ShowRtdElectionComponent
+    ShowRtdElectionComponent,
+    UpgradeRoleComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +45,8 @@ import { ElectionService } from './services/election.service';
   ],
   providers: [
     ElectionAuthorityService,
-    ElectionService
+    ElectionService,
+    UserService
   ]
 })
 export class SuperAdminModule { }

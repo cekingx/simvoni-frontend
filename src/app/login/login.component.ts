@@ -64,6 +64,11 @@ export class LoginComponent implements OnInit {
       );
   }
 
+  redirectRegister()
+  {
+    this.router.navigate(['register']);
+  }
+
   redirectToRoute(role: string)
   {
     if(role == 'super_admin') {

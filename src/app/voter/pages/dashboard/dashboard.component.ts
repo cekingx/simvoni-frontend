@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { KtInitService } from '@app/services/kt-init.service';
 import { BreadcrumbItem } from '@app/_models/breadcrumb-item';
 
 @Component({
@@ -14,9 +15,10 @@ export class DashboardComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private ktInitService: KtInitService) { }
 
   ngOnInit() {
+    this.ktInitService.initialize();
   }
 
 }

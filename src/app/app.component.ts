@@ -1,13 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoadingService } from "./services/loading.service";
 import { Subscription } from "rxjs";
-import { 
+import {
   trigger,
   state,
   style,
   animate,
   transition
  } from "@angular/animations";
+
+declare let KTApp: any;
+declare let KTAppSettings: any;
+declare let KTLayoutAside: any;
+declare let $: any;
 
 @Component({
   selector: 'app-root',
@@ -27,7 +32,7 @@ import {
     ])
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Index Simvoni';
   loadingEventSubscription: Subscription;
   showLoading = false;
@@ -41,7 +46,13 @@ export class AppComponent {
     });
   }
 
-  get stateName() 
+  ngOnInit(): void {
+    $(document).ready(function() {
+        KTLayoutAside.init('kt_aside');
+    });
+  }
+
+  get stateName()
   {
     return this.showLoading ? 'show' : 'hide';
   }

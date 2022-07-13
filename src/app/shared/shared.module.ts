@@ -7,6 +7,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { LabelComponent } from './label/label.component';
 import { ElectionStatusLabelComponent } from './election-status-label/election-status-label.component';
 import { ParticipationStatusLabelComponent } from './participation-status-label/participation-status-label.component';
+import { UpgradeRoleStatusComponent } from './upgrade-role-status/upgrade-role-status.component';
 
 
 
@@ -17,7 +18,8 @@ import { ParticipationStatusLabelComponent } from './participation-status-label/
     FooterComponent,
     LabelComponent,
     ElectionStatusLabelComponent,
-    ParticipationStatusLabelComponent
+    ParticipationStatusLabelComponent,
+    UpgradeRoleStatusComponent
   ],
   imports: [
     CommonModule,
@@ -30,6 +32,7 @@ import { ParticipationStatusLabelComponent } from './participation-status-label/
     LabelComponent,
     ElectionStatusLabelComponent,
     ParticipationStatusLabelComponent,
+    UpgradeRoleStatusComponent
   ]
 })
 export class SharedModule { }

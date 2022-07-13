@@ -1,0 +1,69 @@
+<!--begin::Main-->
+<!--begin::Header Mobile-->
+<sv-voter-header-mobile></sv-voter-header-mobile>
+<!--end::Header Mobile-->
+<div class="d-flex flex-column flex-root">
+  <!--begin::Page-->
+  <div class="d-flex flex-row flex-column-fluid page">
+
+    <!--begin::Aside-->
+    <sv-voter-aside></sv-voter-aside>
+    <!--end::Aside-->
+
+    <!--begin::Wrapper-->
+    <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+      <!--begin::Header-->
+      <sv-voter-header></sv-voter-header>
+      <!--end::Header-->
+
+      <!--begin::Content-->
+      <div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
+        <!--begin::Subheader-->
+        <sv-voter-sub-header [breadcrumbItems]="breadcrumbItems"></sv-voter-sub-header>
+        <!--end::Subheader-->
+
+        <!-- begin::Entry -->
+        <div class="container">
+          <div class="d-flex flex-column">
+            <div class="flex-row-fluid">
+              <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-12">
+                  <div class="card card-custom">
+                    <div class="card-body text-center pt-4">
+                      <h3>Upgrade Role</h3>
+                      <p>Upgrade Role Status: <sv-upgrade-role-label [code]="upgradeRoleStatus.code" [text]="upgradeRoleStatus.value"></sv-upgrade-role-label></p>
+                      <button
+                        *ngIf="upgradeRoleStatus.code == 0"
+                        [swal]="{ title: 'Upgrade Role', text: 'Request Upgrade Role?', showCancelButton: true, focusCancel: true }"
+                        (confirm)="upgradeRole()"
+                        class="btn btn-primary">
+                        Request Upgrade
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end::Entry -->
+        <swal
+          #success
+          title="Sukses"
+          text="Sedang direview oleh Super Admin"
+          icon="success"
+          (confirm)="redirectBack()">
+        </swal>
+      </div>
+      <!--end::Content-->
+
+      <!--begin::Footer-->
+      <sv-footer></sv-footer>
+      <!--end::Footer-->
+    </div>
+    <!--end::Wrapper-->
+  </div>
+  <!--end::Page-->
+</div>
+<!--end::Main-->
+
