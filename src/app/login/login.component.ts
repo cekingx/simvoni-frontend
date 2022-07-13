@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { LoadingService } from "../services/loading.service";
 import { Router } from "@angular/router";
 import { first } from "rxjs/operators";
+import { Role } from '@app/_helper/role.enum';
 
 @Component({
   selector: 'app-login',
@@ -71,11 +72,11 @@ export class LoginComponent implements OnInit {
 
   redirectToRoute(role: string)
   {
-    if(role == 'super_admin') {
+    if(role == Role.SUPER_ADMIN) {
       this.router.navigate(['super-admin']);
-    } else if(role == 'election_authority') {
+    } else if(role == Role.EA) {
       this.router.navigate(['election-authority'])
-    } else if(role == 'voter') {
+    } else if(role == Role.VOTER) {
       this.router.navigate(['']);
     } else {
       console.log('login component error');

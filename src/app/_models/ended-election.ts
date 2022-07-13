@@ -8,4 +8,7 @@ export class EndedCandidate extends Candidate {
 export class EndedElection extends Election {
   winner: string;
   candidates: EndedCandidate[];
+  votes: number;
+  abstains: number;
+  total: number;
 }

@@ -63,9 +63,17 @@ export class ElectionService {
 
   voteOnElection(electionId: number, candidateId: number): Observable<any>
   {
-    return this.http.post(`${baseUrl}/voter/vote`, { election_id: electionId, candidate_id: candidateId })
+    return this.http.post(`${baseUrl}/voter/vote/${electionId}`, { candidate_id: candidateId })
       .pipe(map((response: any) => {
         return response.data;
       }));
+  }
+
+  abstain(electionId: number): Observable<any>
+  {
+    return this.http.post(`${baseUrl}/voter/vote/${electionId}/abstain`, {})
+    .pipe(map((response: any) => {
+      return response.data;
+    }));
   }
 }
