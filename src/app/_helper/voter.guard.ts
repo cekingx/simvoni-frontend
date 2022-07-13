@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { AuthService } from '@app/services/auth.service';
 import { Observable } from 'rxjs';
+import { Role } from './role.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -16,18 +17,18 @@ export class VoterGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree 
+  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
   {
     const currentUser = this.authService.currentUserValue;
 
-    if(currentUser.role == 'voter') {
+    if(currentUser.role == Role.VOTER) {
       return true;
     }
-    
-    if(currentUser.role == 'super_admin') {
+
+    if(currentUser.role == Role.SUPER_ADMIN) {
       this.router.navigate(['super-admin'])
       return false;
-    } else if(currentUser.role == 'election_authority') {
+    } else if(currentUser.role == Role.EA) {
       this.router.navigate(['election-authority']);
       return false;
     } else {
@@ -35,5 +36,5 @@ export class VoterGuard implements CanActivate {
       return false;
     }
   }
-  
+
 }
