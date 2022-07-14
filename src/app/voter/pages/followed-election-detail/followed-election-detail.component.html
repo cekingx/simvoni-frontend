@@ -120,6 +120,30 @@
                 <!--end::Col-->
               </div>
               <!--end::Row-->
+              <div *ngIf="election.status == 'started' && election.participation_status == 'accepted'" class="row">
+                <!-- begin::abstain -->
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                  <!--begin::Card-->
+                  <div class="card card-custom gutter-b card-stretch">
+                    <!--begin::Body-->
+                    <div class="card-body text-center pt-4">
+                      <div class="flex-column">
+                        <div class="flex-row">
+                          <button
+                            class="col-12 my-2 btn btn-lg btn-primary"
+                            [swal]="{title: 'Abstain', text: 'Memilih untuk tidak memilih', showCancelButton: true, focusCancel: true}"
+                            (confirm)="abstain()">
+                            Abstain
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <!--end::Body-->
+                  </div>
+                  <!--end::Card-->
+                </div>
+                <!-- end::abstain -->
+              </div>
             </div>
             <!--end::Content-->
           </div>

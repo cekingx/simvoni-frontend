@@ -17,6 +17,7 @@ import { Subscription } from 'rxjs';
 export class FollowedElectionDetailComponent implements OnInit, OnDestroy {
   subscription1$: Subscription;
   subscription2$: Subscription;
+  subscription3$: Subscription;
   subscriptions: Subscription = new Subscription();
   election: ElectionDetail;
   misiHtml: string;
@@ -61,6 +62,7 @@ export class FollowedElectionDetailComponent implements OnInit, OnDestroy {
   pushSubscription() {
     this.subscriptions.add(this.subscription1$);
     this.subscriptions.add(this.subscription2$);
+    this.subscriptions.add(this.subscription3$);
   }
 
   makeHtml(stringArray: string[]) {
@@ -75,6 +77,14 @@ export class FollowedElectionDetailComponent implements OnInit, OnDestroy {
   voteCandidate(candidateId: number) {
     this.loadingService.showLoading();
     this.subscription2$ = this.electionService.voteOnElection(this.election.id, candidateId).subscribe((data: any) => {
+      this.loadingService.hideLoading();
+      location.reload();
+    })
+  }
+
+  abstain() {
+    this.loadingService.showLoading();
+    this.subscription3$ = this.electionService.abstain(this.election.id).subscribe((data: any) => {
       this.loadingService.hideLoading();
       location.reload();
     })
