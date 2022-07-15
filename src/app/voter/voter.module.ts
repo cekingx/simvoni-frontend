@@ -20,6 +20,7 @@ import { EndedElectionDetailComponent } from './pages/ended-election-detail/ende
 import { KtInitService } from '@app/services/kt-init.service';
 import { UpgradeRoleComponent } from './pages/upgrade-role/upgrade-role.component';
 import { UserService } from './services/user.service';
+import { AddressLabelComponent } from './address-label/address-label.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { UserService } from './services/user.service';
     EndedElectionComponent,
     EndedElectionDetailComponent,
     UpgradeRoleComponent,
+    AddressLabelComponent,
   ],
   imports: [
     CommonModule,
