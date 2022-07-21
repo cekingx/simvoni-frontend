@@ -78,10 +78,26 @@
                           type="text"
                           class="form-control form-control-lg">
                         <div
-                          *ngIf="isSubmitted && formControl.name.errors"
+                          *ngIf="isSubmitted && formControl.visi.errors"
                           class="invalid-feedback">Visi is required</div>
                       </div>
                       <!-- end::visi -->
+                      <!-- begin::image -->
+                      <div class="form-group">
+                        <label>Gambar</label>
+                        <input
+                          formControlName="image"
+                          [ngClass]="{
+                            'is-invalid': isSubmitted && formControl.image.invalid,
+                            'is-valid': isSubmitted && formControl.image.valid
+                          }"
+                          type="file"
+                          class="form-control form-control-lg">
+                        <div
+                          *ngIf="isSubmitted && formControl.image.errors"
+                          class="invalid-feedback">Image is required</div>
+                      </div>
+                      <!-- end::image -->
                       <!-- begin::misi -->
                       <label>Misi</label>
                       <!-- begin::list-misi -->

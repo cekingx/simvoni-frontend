@@ -77,6 +77,7 @@ export class AddCandidateComponent implements OnInit, OnDestroy {
     this.addCandidateForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
       visi: new FormControl('', [Validators.required]),
+      image: new FormControl('', [Validators.required]),
       misi: new FormControl(),
       pengalaman: new FormControl()
     });
@@ -94,30 +95,31 @@ export class AddCandidateComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.isSubmitted = true;
+    console.log(this.formControl);
 
-    if(this.addCandidateForm.invalid) {
-      return;
-    }
+    // if(this.addCandidateForm.invalid) {
+    //   return;
+    // }
 
-    let addCandidateDto: AddCandidateDto = {
-      name: this.formControl.name.value,
-      visi: this.formControl.visi.value,
-      misi: this.misi,
-      pengalaman: this.pengalaman
-    }
-    this.loadingService.showLoading();
-    this.electionService.addCandidate(addCandidateDto, this.election.id)
-      .subscribe(
-        result => {
-          this.loadingService.hideLoading();
-          this.addedCandidate.fire();
-        },
-        err => {
-          this.error = err.error.message;
-          this.loadingService.hideLoading();
-          this.errorSwal.fire();
-        }
-      )
+    // let addCandidateDto: AddCandidateDto = {
+    //   name: this.formControl.name.value,
+    //   visi: this.formControl.visi.value,
+    //   misi: this.misi,
+    //   pengalaman: this.pengalaman
+    // }
+    // this.loadingService.showLoading();
+    // this.electionService.addCandidate(addCandidateDto, this.election.id)
+    //   .subscribe(
+    //     result => {
+    //       this.loadingService.hideLoading();
+    //       this.addedCandidate.fire();
+    //     },
+    //     err => {
+    //       this.error = err.error.message;
+    //       this.loadingService.hideLoading();
+    //       this.errorSwal.fire();
+    //     }
+    //   )
   }
 
   addMisi() {
