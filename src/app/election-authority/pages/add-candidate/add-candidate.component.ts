@@ -35,6 +35,7 @@ export class AddCandidateComponent implements OnInit, OnDestroy {
   addCandidateForm: FormGroup;
   isSubmitted = false;
   error = '';
+  image = null;
 
   @ViewChild('addedCandidate', {static: false})
   public readonly addedCandidate: SwalComponent;
@@ -93,33 +94,43 @@ export class AddCandidateComponent implements OnInit, OnDestroy {
     this.router.navigate(['election-authority/election/', this.election.id])
   }
 
+  onFileChange(event: any) {
+    if(event.target.files.length > 0) {
+      this.image = event.target.files[0];
+    }
+  }
+
   onSubmit() {
     this.isSubmitted = true;
     console.log(this.formControl);
 
-    // if(this.addCandidateForm.invalid) {
-    //   return;
-    // }
+    if(this.addCandidateForm.invalid) {
+      return;
+    }
 
-    // let addCandidateDto: AddCandidateDto = {
-    //   name: this.formControl.name.value,
-    //   visi: this.formControl.visi.value,
-    //   misi: this.misi,
-    //   pengalaman: this.pengalaman
-    // }
-    // this.loadingService.showLoading();
-    // this.electionService.addCandidate(addCandidateDto, this.election.id)
-    //   .subscribe(
-    //     result => {
-    //       this.loadingService.hideLoading();
-    //       this.addedCandidate.fire();
-    //     },
-    //     err => {
-    //       this.error = err.error.message;
-    //       this.loadingService.hideLoading();
-    //       this.errorSwal.fire();
-    //     }
-    //   )
+    let addCandidateDto: AddCandidateDto = {
+      name: this.formControl.name.value,
+      visi: this.formControl.visi.value,
+      misi: this.misi,
+      pengalaman: this.pengalaman
+    }
+
+    const formData = new FormData();
+    formData.append('file', this.image);
+    formData.append('data', JSON.stringify(addCandidateDto));
+    this.loadingService.showLoading();
+    this.electionService.addCandidate(formData, this.election.id)
+      .subscribe(
+        result => {
+          this.loadingService.hideLoading();
+          this.addedCandidate.fire();
+        },
+        err => {
+          this.error = err.error.message;
+          this.loadingService.hideLoading();
+          this.errorSwal.fire();
+        }
+      )
   }
 
   addMisi() {

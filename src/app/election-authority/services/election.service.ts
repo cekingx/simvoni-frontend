@@ -28,9 +28,9 @@ export class ElectionService {
       }));
   }
 
-  addCandidate(addCandidateDto: AddCandidateDto, electionId: number): Observable<any>
+  addCandidate(formData: FormData, electionId: number): Observable<any>
   {
-    return this.http.post(`${baseUrl}/election-authority/add-candidate/${electionId}`, addCandidateDto)
+    return this.http.post(`${baseUrl}/election-authority/add-candidate/${electionId}`, formData)
       .pipe(map((response: any) => {
         return response.data;
       }));

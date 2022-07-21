@@ -92,6 +92,7 @@
                             'is-valid': isSubmitted && formControl.image.valid
                           }"
                           type="file"
+                          (change)="onFileChange($event)"
                           class="form-control form-control-lg">
                         <div
                           *ngIf="isSubmitted && formControl.image.errors"
