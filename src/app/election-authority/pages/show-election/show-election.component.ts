@@ -23,6 +23,7 @@ export class ShowElectionComponent implements OnInit, OnDestroy {
   election: Election;
   participantLink: string;
   addCandidateLink: string;
+  weightLink: string;
   electionStatus: any;
 
   breadcrumbItems: BreadcrumbItem[] = [
@@ -62,7 +63,8 @@ export class ShowElectionComponent implements OnInit, OnDestroy {
         route: '/election-authority/election/' + this.election.id
       });
       this.participantLink = '/election-authority/election/' + this.election.id + '/participant';
-      this.addCandidateLink = '/election-authority/election/' + this.election.id + '/add-candidate'
+      this.addCandidateLink = '/election-authority/election/' + this.election.id + '/add-candidate';
+      this.weightLink = '/election-authority/election/' + this.election.id + '/weight';
       this.loadingService.hideLoading();
     });
   }

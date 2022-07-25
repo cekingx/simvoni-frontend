@@ -10,6 +10,8 @@ import { ElectionResolver } from './pages/show-election/resolver/election.resolv
 import { ShowParticipantComponent } from './pages/show-participant/show-participant.component';
 import { ElectionParticipantResolver } from './pages/show-participant/resolver/election-participant.resolver';
 import { AddCandidateComponent } from './pages/add-candidate/add-candidate.component';
+import { ShowWeightComponent } from './pages/show-weight/show-weight.component';
+import { ElectionWeightResolver } from './pages/show-weight/resolver/election-weight.resolver';
 
 const routes: Routes = [
   {
@@ -41,6 +43,14 @@ const routes: Routes = [
     canActivate: [AuthGuard, ElectionAuthorityGuard],
     resolve: {
       participant: ElectionParticipantResolver
+    }
+  },
+  {
+    path: 'election-authority/election/:id/weight',
+    component: ShowWeightComponent,
+    canActivate: [AuthGuard, ElectionAuthorityGuard],
+    resolve: {
+      weight: ElectionWeightResolver
     }
   },
   {

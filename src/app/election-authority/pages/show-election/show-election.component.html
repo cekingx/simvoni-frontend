@@ -85,6 +85,9 @@
                         <!-- begin::show-participant -->
                         <a class="btn btn-secondary mr-2" routerLink="{{ participantLink }}">Tampilkan Peserta</a>
                         <!-- end::show-participant -->
+                        <!-- begin::show-weight -->
+                        <a class="btn btn-secondary mr-2" routerLink="{{ weightLink }}">Tampilkan Weight</a>
+                        <!-- end::weight -->
                         <!-- begin::ready-to-deploy -->
                         <button *ngIf="election.status == electionStatus.draft"
                           [swal]="{ title: 'Ready to Deploy', text: election.name, showCancelButton: true, focusCancel: true }"
