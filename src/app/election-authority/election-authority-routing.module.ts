@@ -31,11 +31,6 @@ const routes: Routes = [
     canActivate: [AuthGuard, ElectionAuthorityGuard]
   },
   {
-    path: 'election-authority/election/create-weight',
-    component: CreateWeightComponent,
-    canActivate: [AuthGuard, ElectionAuthorityGuard]
-  },
-  {
     path: 'election-authority/election/:id',
     component: ShowElectionComponent,
     canActivate: [AuthGuard, ElectionAuthorityGuard],
@@ -62,6 +57,14 @@ const routes: Routes = [
   {
     path: 'election-authority/election/:id/add-candidate',
     component: AddCandidateComponent,
+    canActivate: [AuthGuard, ElectionAuthorityGuard],
+    resolve: {
+      election: ElectionResolver
+    }
+  },
+  {
+    path: 'election-authority/election/:id/add-weight',
+    component: CreateWeightComponent,
     canActivate: [AuthGuard, ElectionAuthorityGuard],
     resolve: {
       election: ElectionResolver

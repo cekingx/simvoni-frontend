@@ -14,6 +14,7 @@ export class ShowWeightComponent implements OnInit, OnDestroy {
   subscription1$: Subscription;
   subscriptions: Subscription = new Subscription();
   weights: ElectionWeight;
+  createWeightLink: string;
 
   breadcrumbItems: BreadcrumbItem[] = [
     {
@@ -40,6 +41,7 @@ export class ShowWeightComponent implements OnInit, OnDestroy {
         route: '/election-authority/election/' + this.weights.electionId + '/weight'
       })
       this.loadingService.hideLoading();
+      this.createWeightLink = `/election-authority/election/${this.weights.electionId}/add-weight`
     });
   }
 

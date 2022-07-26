@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AddCandidateDto } from '@app/_models/candidate';
 import { CreateElectionDto } from '@app/_models/create-election.dto';
+import { CreateWeightDto } from '@app/_models/create-weight.dto';
 import { Election } from '@app/_models/election';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -31,6 +32,14 @@ export class ElectionService {
   addCandidate(formData: FormData, electionId: number): Observable<any>
   {
     return this.http.post(`${baseUrl}/election-authority/add-candidate/${electionId}`, formData)
+      .pipe(map((response: any) => {
+        return response.data;
+      }));
+  }
+
+  addWeight(createWeightDto: CreateWeightDto, electionId: number): Observable<any>
+  {
+    return this.http.post(`${baseUrl}/election-authority/add-weight/${electionId}`, createWeightDto)
       .pipe(map((response: any) => {
         return response.data;
       }));
