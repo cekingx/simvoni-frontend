@@ -69,9 +69,9 @@ export class ElectionService {
       }));
   }
 
-  acceptParticipation(participationId: number): Observable<any>
+  acceptParticipation(participationId: number, weightId: number): Observable<any>
   {
-    return this.http.post(`${baseUrl}/election-authority/election-participant/accept/${participationId}`, {})
+    return this.http.post(`${baseUrl}/election-authority/election-participant/accept/${participationId}`, {weightId})
       .pipe(map((response: any) => {
         return response.data;
       }));

@@ -68,7 +68,7 @@
                           <!-- <button class="btn btn-primary mr-2" (click)="acceptParticipant(participant.participationId)">Terima</button> -->
                           <button
                             class="btn btn-primary mr-2"
-                            (click)="getRole()"
+                            (click)="acceptParticipant(participant.participationId)"
                           >Terima</button>
                           <!-- end::accept-participant -->
                           <!-- begin::reject-participant -->
@@ -88,14 +88,10 @@
           <!-- begin::select-role -->
           <swal
             #role
-            title="Select field"
+            title="Select role"
             input="select"
-            [inputOptions]="{
-              '1': 'default',
-              '2': 'dosen',
-              '3': 'tu'
-            }"
-            inputPlaceholder="Select a fruit"
+            [inputOptions]="mappedWeight"
+            inputPlaceholder="Select a role"
             showCancelButton="true"
           >
           </swal>

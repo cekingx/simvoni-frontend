@@ -43,7 +43,8 @@ const routes: Routes = [
     component: ShowParticipantComponent,
     canActivate: [AuthGuard, ElectionAuthorityGuard],
     resolve: {
-      participant: ElectionParticipantResolver
+      participant: ElectionParticipantResolver,
+      weight: ElectionWeightResolver
     }
   },
   {

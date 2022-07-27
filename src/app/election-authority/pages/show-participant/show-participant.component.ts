@@ -4,6 +4,7 @@ import { ElectionService } from '@app/election-authority/services/election.servi
 import { LoadingService } from '@app/services/loading.service';
 import { BreadcrumbItem } from '@app/_models/breadcrumb-item';
 import { ElectionParticipant } from '@app/_models/election-participant';
+import { ElectionWeight } from '@app/_models/weight';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { Subscription } from 'rxjs';
 
@@ -16,6 +17,7 @@ export class ShowParticipantComponent implements OnInit, OnDestroy {
   subscription1$: Subscription;
   subscriptions: Subscription = new Subscription();
   participants: ElectionParticipant;
+  weights: ElectionWeight;
 
   breadcrumbItems: BreadcrumbItem[] = [
     {
@@ -28,6 +30,7 @@ export class ShowParticipantComponent implements OnInit, OnDestroy {
     }
   ];
   roleValue: number;
+  mappedWeight;
 
   @ViewChild('role', {static: false})
   public readonly role: SwalComponent;
@@ -41,6 +44,7 @@ export class ShowParticipantComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription1$ = this.route.data.subscribe((data: any) => {
       this.participants = data.participant;
+      this.weights = data.weight;
       this.breadcrumbItems.push({
         name: this.participants.electionName,
         route: '/election-authority/election/' + this.participants.electionId
@@ -49,13 +53,15 @@ export class ShowParticipantComponent implements OnInit, OnDestroy {
         name: 'Peserta',
         route: '/election-authority/election/' + this.participants.electionId + '/participant'
       });
+      this.mappedWeight = this.mapWeight();
       this.loadingService.hideLoading();
     });
   }
 
-  acceptParticipant(participationId: number) {
+  async acceptParticipant(participationId: number) {
+    const {value: weightId} = await this.role.fire();
     this.loadingService.showLoading();
-    this.electionService.acceptParticipation(participationId).subscribe((data: any) => {
+    this.electionService.acceptParticipation(participationId, weightId).subscribe((data: any) => {
       location.reload();
     });
   }
@@ -67,9 +73,13 @@ export class ShowParticipantComponent implements OnInit, OnDestroy {
     });
   }
 
-  async getRole() {
-    const {value} = await this.role.fire();
-    console.log(value);
+  mapWeight() {
+    let object = {};
+    for (let index = 0; index < this.weights.weight.length; index++) {
+      const element = this.weights.weight[index];
+      object[element.id] = element.name;
+    }
+    return object;
   }
 
   ngOnDestroy() {
