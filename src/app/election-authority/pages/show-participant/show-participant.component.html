@@ -65,7 +65,11 @@
                         </td>
                         <td>
                           <!-- begin::accept-participant -->
-                          <button class="btn btn-primary mr-2" (click)="acceptParticipant(participant.participationId)">Terima</button>
+                          <!-- <button class="btn btn-primary mr-2" (click)="acceptParticipant(participant.participationId)">Terima</button> -->
+                          <button
+                            class="btn btn-primary mr-2"
+                            (click)="getRole()"
+                          >Terima</button>
                           <!-- end::accept-participant -->
                           <!-- begin::reject-participant -->
                           <button class="btn btn-danger mr-2" (click)="rejectParticipant(participant.participationId)">Tolak</button>
@@ -81,6 +85,21 @@
               </div>
             </div>
           </div>
+          <!-- begin::select-role -->
+          <swal
+            #role
+            title="Select field"
+            input="select"
+            [inputOptions]="{
+              '1': 'default',
+              '2': 'dosen',
+              '3': 'tu'
+            }"
+            inputPlaceholder="Select a fruit"
+            showCancelButton="true"
+          >
+          </swal>
+          <!-- end::select-role -->
         </div>
         <!-- end::Entry -->
       </div>

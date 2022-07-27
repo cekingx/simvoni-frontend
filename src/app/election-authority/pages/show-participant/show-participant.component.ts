@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ElectionService } from '@app/election-authority/services/election.service';
 import { LoadingService } from '@app/services/loading.service';
 import { BreadcrumbItem } from '@app/_models/breadcrumb-item';
 import { ElectionParticipant } from '@app/_models/election-participant';
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -26,6 +27,10 @@ export class ShowParticipantComponent implements OnInit, OnDestroy {
       route: '/election-authority/election'
     }
   ];
+  roleValue: number;
+
+  @ViewChild('role', {static: false})
+  public readonly role: SwalComponent;
 
   constructor(
     private route: ActivatedRoute,
@@ -60,6 +65,11 @@ export class ShowParticipantComponent implements OnInit, OnDestroy {
     this.electionService.rejectParticipation(participationId).subscribe((data: any) => {
       location.reload();
     });
+  }
+
+  async getRole() {
+    const {value} = await this.role.fire();
+    console.log(value);
   }
 
   ngOnDestroy() {
